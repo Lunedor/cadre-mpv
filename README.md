@@ -1,4 +1,4 @@
-# cadre-player-lite
+# cadre-mpv
 
 A modular, themeable UI layer for [mpv](https://mpv.io): custom on-screen controller, playlist, title bar, music mode, YouTube and streaming browsers, subtitle search, live captions and translate, A-B loop export and session restore. It is written in Lua, with two small Qt helper apps for the YouTube and Stream windows.
 
