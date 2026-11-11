@@ -7,19 +7,19 @@ A modular, themeable UI layer for [mpv](https://mpv.io): custom on-screen contro
 
 | Theme | Preview |
 |---|---|
-| Default | ![Default](screenshots/Default.png "Default") |
-| MacOsish | ![MacOsish](screenshots/MacOsish.png "MacOsish") |
-| PillGlassy | ![PillGlassy](screenshots/PillGlassy.png "PillGlassy") |
-| Terminal | ![Terminal](screenshots/Terminal.png "Terminal") |
-| GnomeLibadwaita | ![GnomeLibadwaita](screenshots/GnomeLibadwaita.png "GnomeLibadwaita") |
-| NetflixCinema | ![NetflixCinema](screenshots/NetflixCinema.png "NetflixCinema") |
-| Plexed | ![Plexed](screenshots/Plexed.png "Plexed") |
-| Spotilike | ![Spotilike](screenshots/Spotilike.png "Spotilike") |
-| UltraCompact | ![UltraCompact](screenshots/UltraCompact.png "UltraCompact") |
-| VHSRetro | ![VHSRetro](screenshots/VHSRetro.png "VHSRetro") |
-| WinampNostalgia | ![WinampNostalgia](screenshots/WinampNostalgia.png "WinampNostalgia") |
-| YouTubePlayer | ![YouTubePlayer](screenshots/YouTubePlayer.png "YouTubePlayer") |
-| ZenGlass | ![ZenGlass](screenshots/ZenGlass.png "ZenGlass") |
+| Default | ![Default](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/Default.png "Default") |
+| MacOsish | ![MacOsish](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/MacOsish.png "MacOsish") |
+| PillGlassy | ![PillGlassy](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/PillGlassy.png "PillGlassy") |
+| Terminal | ![Terminal](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/Terminal.png "Terminal") |
+| GnomeLibadwaita | ![GnomeLibadwaita](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/GnomeLibadwaita.png "GnomeLibadwaita") |
+| NetflixCinema | ![NetflixCinema](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/NetflixCinema.png "NetflixCinema") |
+| Plexed | ![Plexed](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/Plexed.png "Plexed") |
+| Spotilike | ![Spotilike](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/Spotilike.png "Spotilike") |
+| UltraCompact | ![UltraCompact](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/UltraCompact.png "UltraCompact") |
+| VHSRetro | ![VHSRetro](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/VHSRetro.png "VHSRetro") |
+| WinampNostalgia | ![WinampNostalgia](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/WinampNostalgia.png "WinampNostalgia") |
+| YouTubePlayer | ![YouTubePlayer](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/YouTubePlayer.png "YouTubePlayer") |
+| ZenGlass | ![ZenGlass](https://raw.githubusercontent.com/Lunedor/cadre-player-lite/refs/heads/main/screenshots/ZenGlass.png "ZenGlass") |
 
 ## Table of Contents
 1. [Features](#features)
