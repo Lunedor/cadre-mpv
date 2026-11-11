@@ -41,7 +41,7 @@ A modular, themeable UI layer for [mpv](https://mpv.io): custom on-screen contro
 | Title bar | `titlebar` | Custom title bar (sets `border=no`) | none |
 | Music mode | `music_mode` | Music-focused window layout | none |
 | YouTube | `youtube` | Qt browser: search, home, subscriptions, history, watch later, liked | PyQt6, yt-dlp, Firefox cookies (browse feeds) |
-| Stream | `stream` | Qt browser for movies/series (TMDB + Torrentio), continue watching, "Up Next" button | PySide6, TMDB API key, Torrentio config |
+| Stream | `stream` | Qt browser for movies/series (TMDB + Torrentio), continue watching, "Up Next" button | PyQt6, TMDB API key, Torrentio config |
 | Subtitles | `subs` | OpenSubtitles search and per-file cache | OpenSubtitles API key, `curl` |
 | Live Captions | `livecap` | Transcribe and translate audio into live captions or full subtitle files | Python, FFmpeg, Whisper and Hy-MT2 dependencies |
 | A-B loop | `ab_loop` | A-B loop queue and clip export | `ffmpeg` on PATH |
@@ -385,21 +385,11 @@ If you leave the Stream `python_path` empty, it falls back to `python`.
 
 Install the binding imported by the helper, using the same Python interpreter configured in `python_path`.
 
-Dependency clarification: the current module table lists PyQt6 for YouTube and PySide6 for Stream, but the current Stream setup instructions specify PyQt6. This cannot be resolved from the READMEs alone. Check the imports in `tools/cadre_stream.py` before choosing the Stream dependency.
+Dependency clarification: the current module table lists PyQt6 for YouTube and Stream, but the current Stream setup instructions specify PyQt6. This cannot be resolved from the READMEs alone. Check the imports in `tools/cadre_stream.py` before choosing the Stream dependency.
 
-On Windows, for YouTube:
-
-```powershell
-python -m pip install PyQt6
-```
-
-For Stream, install the binding its helper imports:
+On Windows, for YouTube and Stream:
 
 ```powershell
-# If cadre_stream.py imports PySide6:
-python -m pip install PySide6
-
-# If cadre_stream.py imports PyQt6 instead:
 python -m pip install PyQt6
 ```
 
