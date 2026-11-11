@@ -1,0 +1,1081 @@
+CADRE THEME AUTHORING REFERENCE — CLEAN COMPONENT EDITION
+========================================================
+Includes OSC, Playlist (_pl), Titlebar (_tb), and Menu (_mn).
+Derived from the supplied reference and component loaders. No implementation
+source dumps or source appendices. Small authoring examples are allowed.
+Static inspection only; not runtime-tested. Shared common loader not supplied.
+
+HOW TO USE THIS DOCUMENT
+------------------------
+Use the authoring rules, OSC slot/decorations guide, and key entries below.
+The added component catalogues contain a type, fallback/default, and purpose for
+every scoped key looked up by the supplied playlist/titlebar/menu versions.
+A suffix defines scope, not automatic support or automatic fallback behavior.
+do not infer values. New component entries use actual loader fallbacks.
+Shared fallback keys mentioned by a component are supported there even when
+not separately enumerated in the original OSC-only GLOBAL / SHARED section.
+
+
+================================================================================
+CADRE PLAYER THEME REFERENCE
+Generated from cadre_osc_core.lua and cadre_osc_ui-2.lua
+Complete reference: keys, fallbacks, enums, slots, overrides, placement.
+================================================================================
+
+PURPOSE
+-------
+This is the authoritative companion for an LLM creating or editing Cadre Player
+theme files. A theme is always a simple Lua module:
+
+    local M = {}
+
+    -- theme settings
+
+    return M
+
+RULES FOR THE LLM
+-----------------
+1. Use only keys, button IDs, enum values, aliases, and fallback chains listed
+   in this reference.
+2. Never invent a key, button ID, enum value, alias, or fallback.
+3. Preserve fallback order exactly.
+4. Prefer global keys for app-wide changes.
+5. Use scoped keys only for area-specific overrides.
+6. Colors are RGB hex strings without '#', e.g. "F28C1E".
+7. Alpha values are two-digit hexadecimal opacity values.
+8. Sizes, spacing, offsets, and radii are plain numbers, usually pixels.
+9. For inherited booleans such as glass blur, nil inherits the global value.
+10. The seekbar is an independent OSC component with its own placement state.
+    It is not merely an OSC slot widget.
+
+VALUE FORMATS
+-------------
+color   RGB hex string without '#', e.g. "F28C1E"
+alpha   Two-digit hex opacity value, e.g. "00", "30", "A0", "FF"
+number  Lua number
+boolean true or false
+string  Lua string
+enum    One of the listed canonical values
+table   Lua table
+
+ALPHA CONVENTION
+----------------
+Theme alpha fields use opacity values. common.ass_alpha converts these
+two-digit hex values to ASS transparency when drawing:
+
+    "00" = fully transparent
+    "30" = low opacity
+    "80" = half opacity
+    "A0" = high opacity
+    "FF" = fully opaque
+
+Higher values mean more opacity.
+
+Valid examples:
+    "00", "1C", "30", "40", "80", "A0", "E0", "FF"
+
+
+SCOPE SUFFIXES
+--------------
+(none)  Global/shared
+_osc    On-screen controller / OSC
+_pl     Playlist
+_tb     Titlebar
+_mn     Menu
+
+FALLBACK MODEL
+--------------
+    <key>_<scope> -> <global key> -> built-in default
+
+Example:
+
+    color_text_osc -> text_color -> "F8FAFC"
+
+NAMING GRAMMAR
+--------------
+    <property>_<target>[_<subtarget>]_<scope>
+
+This grammar helps readability. It does not define support: use only keys in
+this reference.
+
+================================================================================
+ENUM VALUES AND ALIASES
+================================================================================
+
+
+align_title_osc
+    type: enum
+    values: center, left, right
+    accepted aliases:
+        center -> center
+        left -> left
+        middle -> center
+        right -> right
+
+anchor_y_button_osc
+    type: enum
+    values: bottom, center, top
+
+anchor_y_panel_osc
+    type: enum
+    values: bottom, center, top
+
+button_gradient_type
+    type: enum
+    values: circular, left_to_right, top_to_bottom
+
+gradient_type
+    type: enum
+    values: circular, left_to_right, top_to_bottom
+
+mode_resize_hover_seekbar_osc
+    type: enum
+    values: all, segment
+
+position_seekbar_osc
+    type: enum
+    values: above_buttons, below_buttons, panel_bottom, panel_top, top
+    accepted aliases:
+        panel_top -> top
+
+position_time_label_osc
+    type: enum
+    values: above_seekbar, auto, below_seekbar, inline, same_level
+
+position_title_osc
+    type: enum
+    values: above_osc, above_seekbar, below_osc, below_seekbar
+    accepted aliases:
+        above -> above_seekbar
+        above_buttons -> above_osc
+        above_osc -> above_osc
+        above_seekbar -> above_seekbar
+        below -> below_seekbar
+        below_buttons -> below_osc
+        below_osc -> below_osc
+        below_seekbar -> below_seekbar
+        up -> above_seekbar
+
+glass_blur
+    type: boolean
+    fallback/default: false
+    purpose: Global glass-blur master switch. Component-specific
+             enabled_glass_blur_* keys inherit this only when nil.
+
+================================================================================
+OSC SLOT SYSTEM, BUTTON IDS, AND PLACEMENT PRECEDENCE
+================================================================================
+
+OSC SLOTS
+---------
+Base slot keys:
+    osc_L1, osc_L2, osc_L3, osc_L4
+    osc_C1, osc_C2, osc_C3
+    osc_R1, osc_R2, osc_R3, osc_R4, osc_R5
+
+The loader supports slots 1 through 32 for each side, so custom themes may also
+use keys such as osc_L6, osc_C7, or osc_R12.
+
+Example:
+
+    M.osc_L1 = "time"
+    M.osc_C1 = "play"
+    M.osc_R1 = "volume_slider"
+
+ANCHORED SLOTS
+--------------
+Anchored slots are independent of their base slot. The suffix controls the
+anchor; it does not replace the base slot.
+
+Anchor suffixes:
+    _top          Anchor to the top of the window.
+    _center       Anchor to the vertical center of the window.
+    _bottom       Anchor to the bottom of the window.
+    _top_osc      Anchor to the top of the OSC panel.
+    _center_osc   Anchor to the vertical center of the OSC panel.
+    _bottom_osc   Anchor to the bottom of the OSC panel.
+
+Examples:
+
+    M.osc_L1_top = "title"
+    M.osc_L1 = "time"
+    M.osc_C1_center = "play"
+    M.osc_C2_center = "next"
+    M.osc_C3_bottom_osc = "seekbar"
+
+`osc_L1_top` and `osc_L1` are independent placements.
+
+BUTTON IDS
+----------
+Valid button/action IDs for OSC slots:
+
+    prev
+    play
+    play_only
+    pause
+    next
+    stop
+    seekbar_back
+    seekbar_forward
+    volume
+    volume_slider
+    mute
+    time
+    title
+    seekbar
+    add
+    subtitle
+    subtitle_list
+    audio_list
+    fullscreen
+    frame_back_step
+    frame_step
+    chapter_prev
+    chapter_next
+    settings
+    speed_down
+    speed_reset
+    speed_up
+    speed_control
+    speed_control_wheel
+    ab_loop
+    playlist
+    stream
+    youtube
+    music_mode
+    info
+    screenshot
+    pin
+    pip
+    ontop
+    separator
+    quit
+
+Only one seekbar slot can be configured at a time.
+
+SPECIAL COMPONENT BEHAVIOR
+--------------------------
+
+Title:
+    A slot containing "title" replaces floating-title placement.
+    If no title slot is used, the floating title is controlled by:
+        enabled_title_osc
+        position_title_osc
+
+Time:
+    A slot containing "time" replaces standalone elapsed/duration labels.
+
+Seekbar:
+    A slot containing "seekbar" places the seekbar track in that slot row.
+    If no seekbar slot is used, position_seekbar_osc places the standalone
+    seekbar track.
+    Configure only one seekbar location: either a seekbar slot or
+    position_seekbar_osc, not both.
+
+Seekbar visibility:
+    enabled_seekbar_osc = false
+    hides the seekbar, its slot, hitbox, and seek labels.
+
+Speed:
+    speed_down, speed_reset, speed_up are independent button to control video speed.
+    speed_control is a single button that opens a dialog for speed control wheel design
+    speed_control_wheel make the wheel a button on directly osc, it has general button theming also a special value for its width:
+    "width_speed_control_wheel_osc" and default value is 180.
+
+
+PLACEMENT PRECEDENCE
+--------------------
+
+Individual placement is the default.
+
+Individual ordinary row offset:
+    offset_row_main_osc
+    -> offset_button_row_osc
+    -> offset_button_row
+    -> 0
+
+Individual anchored row offset:
+    offset_top_osc / offset_center_osc / offset_bottom_osc
+    -> offset_button_row_osc
+    -> offset_button_row
+    -> 0
+
+Structured placement uses osc_layout. Fields supplied there override matching
+individual placement settings, and automatic row movement is disabled.
+
+Do not combine individual and structured placement unless structured fields
+are intended to take precedence.
+
+STRUCTURED LAYOUT
+-----------------
+
+osc_layout is an optional table.
+
+Example:
+
+    M.osc_layout = {
+        button_row = {
+            anchor = "top",
+            offset = 14,
+        },
+        seekbar = {
+            anchor = "below_buttons",
+            gap = 8,
+        },
+    }
+
+button_row fields:
+    anchor  "top", "center", or "bottom"
+    offset  number
+
+seekbar fields:
+    anchor       "above_buttons", "below_buttons", "panel_top", or "panel_bottom"
+    gap          number; used with above_buttons/below_buttons
+    panel_inset  number; used with panel_top/panel_bottom
+
+Structured vertical layout disables automatic row movement that would normally
+create clearance for the seekbar.
+
+When osc_layout.seekbar.anchor is present, it overrides position_seekbar_osc.
+When osc_layout.button_row.anchor or .offset is present, it overrides the
+matching individual button-row settings.
+
+================================================================================
+OSC SLOT APPEARANCE OVERRIDES
+================================================================================
+
+osc_slot_overrides
+    type: table
+    purpose: Override the appearance of one exact OSC slot.
+
+The table key must be the exact slot name, including any anchor suffix.
+
+Examples:
+    osc_L2
+    osc_C1_center
+    osc_L1_top
+    osc_C3_bottom_osc
+
+If osc_slot_overrides is nil, it is treated as empty.
+If it is not a table, it is ignored with a warning.
+Unknown option names, invalid values, and valid-but-non-applicable values are
+ignored with a warning.
+
+--------------------------------------------------------------------------------
+VALIDATION RULES
+--------------------------------------------------------------------------------
+
+Positive number fields:
+    icon_size
+    font_size
+    hover_scale
+
+Non-negative number fields:
+    spacing
+    button_height
+    button_padding
+    button_radius
+    button_border_width
+    hover_border_width
+    hover_radius
+    separator_width
+    separator_height
+    separator_radius
+    icon_outline_width
+    icon_outline_blur
+    icon_shadow_blur
+
+Finite number fields:
+    icon_shadow_x
+    icon_shadow_y
+
+Color fields must be 6-digit RGB hex strings, e.g. "F28C1E".
+
+Alpha fields must be two-digit hex opacity values.
+    "00" = fully transparent
+    "FF" = fully opaque
+
+Boolean fields:
+    icon_outline
+    icon_shadow
+    button_background
+    button_border
+    hover_border
+
+button_gradient_type values:
+    "left_to_right"
+    "top_to_bottom"
+    "circular"
+
+button_border_sides must be a table whose keys are only:
+    top, right, bottom, left
+
+Each value must be boolean. Omitting it draws all sides.
+
+--------------------------------------------------------------------------------
+SLOT OVERRIDE FIELDS
+--------------------------------------------------------------------------------
+
+icon_size
+    type: positive number
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_color
+    type: color
+    applies to: every slot except "time", "title", and "seekbar"
+
+font_size
+    type: positive number
+    applies to: only "time" and "title" slots
+
+text_color
+    type: color
+    applies to: only "time" and "title" slots
+
+spacing
+    type: non-negative number
+    applies to: every slot
+    meaning: Center-to-center distance after this slot, before the next item
+             in the same row and side group.
+
+button_background
+    type: boolean
+    applies to: every slot except "seekbar"
+    meaning: Enables the button background. The background color is visible
+             only when this is true.
+
+button_color
+    type: color
+    applies to: every slot except "seekbar"
+
+button_alpha
+    type: opacity (two hex digits)
+    applies to: every slot except "seekbar"
+
+button_gradient_color
+    type: color
+    applies to: every slot except "seekbar"
+
+button_gradient_type
+    type: enum
+    values: "left_to_right", "top_to_bottom", "circular"
+    applies to: every slot except "seekbar"
+
+button_border
+    type: boolean
+    applies to: every slot except "seekbar"
+
+button_border_color
+    type: color
+    applies to: every slot except "seekbar"
+
+button_border_alpha
+    type: opacity (two hex digits)
+    applies to: every slot except "seekbar"
+
+button_border_width
+    type: non-negative number
+    applies to: every slot except "seekbar"
+
+button_border_sides
+    type: table
+    applies to: every slot except "seekbar"
+
+button_height
+    type: non-negative number
+    applies to: every slot except "seekbar"
+
+button_padding
+    type: non-negative number
+    applies to: every slot except "seekbar"
+    meaning: Adds horizontal space to both sides, making the background wider.
+
+button_radius
+    type: non-negative number
+    applies to: every slot except "seekbar"
+
+hover_icon_color
+    type: color
+    applies to: every slot except "time", "title", "seekbar", "volume_slider"
+
+hover_bg_color
+    type: color
+    applies to: every slot except "time", "title", and "seekbar"
+
+hover_bg_alpha
+    type: opacity (two hex digits)
+    applies to: every slot except "time", "title", and "seekbar"
+
+hover_scale
+    type: positive number
+    applies to: every slot except "time", "title", "seekbar", "volume_slider"
+    meaning: Changes visual size only. It does not change layout spacing or
+             the hit area.
+
+hover_border
+    type: boolean
+    applies to: every slot except "time", "title", and "seekbar"
+
+hover_border_color
+    type: color
+    applies to: every slot except "time", "title", and "seekbar"
+
+hover_border_alpha
+    type: opacity (two hex digits)
+    applies to: every slot except "time", "title", and "seekbar"
+
+hover_border_width
+    type: non-negative number
+    applies to: every slot except "time", "title", and "seekbar"
+
+hover_radius
+    type: non-negative number
+    applies to: every slot except "time", "title", and "seekbar"
+    meaning: Radius of the hovered surface. When omitted, the normal button
+             radius is used.
+
+separator_width
+    type: non-negative number
+    applies to: only "separator" slots
+
+separator_height
+    type: non-negative number
+    applies to: only "separator" slots
+
+separator_radius
+    type: non-negative number
+    applies to: only "separator" slots
+
+separator_color
+    type: color
+    applies to: only "separator" slots
+
+separator_alpha
+    type: opacity (two hex digits)
+    applies to: only "separator" slots
+
+icon_outline
+    type: boolean
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_outline_color
+    type: color
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_outline_alpha
+    type: opacity (two hex digits)
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_outline_width
+    type: non-negative number
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_outline_blur
+    type: non-negative number
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_shadow
+    type: boolean
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_shadow_color
+    type: color
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_shadow_alpha
+    type: opacity (two hex digits)
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_shadow_x
+    type: finite number
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_shadow_y
+    type: finite number
+    applies to: every slot except "time", "title", and "seekbar"
+
+icon_shadow_blur
+    type: non-negative number
+    applies to: every slot except "time", "title", and "seekbar"
+
+--------------------------------------------------------------------------------
+SLOT OVERRIDE EXAMPLE
+--------------------------------------------------------------------------------
+
+M.osc_slot_overrides = {
+    osc_L2 = {
+        button_background = true,
+        button_color = "F59E0B",
+        button_alpha = "E7",
+        button_padding = 8,
+        button_radius = 12,
+        button_gradient_color = "FFA040",
+        button_gradient_type = "left_to_right",
+        hover_icon_color = "FFFFFF",
+        hover_bg_color = "FFA040",
+        hover_bg_alpha = "CF",
+        hover_scale = 1.08,
+        hover_border = true,
+        hover_border_color = "FFFFFF",
+        hover_border_alpha = "DF",
+        hover_border_width = 1,
+        hover_radius = 10,
+    },
+
+    osc_C1_center = {
+        icon_size = 42,
+        icon_color = "FFFFFF",
+        spacing = 18,
+        button_height = 44,
+        button_padding = 6,
+        button_radius = 22,
+    },
+
+    osc_L1_top = {
+        font_size = 18,
+        text_color = "FFFFFF",
+    },
+}
+
+
+================================================================================
+OSC ROW AND GROUP OVERRIDES
+================================================================================
+
+osc_group_overrides
+    type: table
+    purpose: Override decorations for an entire OSC row or anchored row.
+
+Row keys are built from:
+
+    <row prefix>[_<anchor>][_osc]
+
+Row prefixes:
+    L = left row
+    C = center row
+    R = right row
+
+Anchor suffixes:
+    _top
+    _center
+    _bottom
+
+OSC-space suffix:
+    _osc
+
+Examples:
+    L
+    C
+    R
+    L_top
+    C_center
+    R_bottom
+    C_center_osc
+    L_top_osc
+
+Each row override may contain three tables:
+    icon
+    button
+    group
+
+Unspecified properties inherit the corresponding global OSC decoration settings.
+
+--------------------------------------------------------------------------------
+ROW ICON EFFECTS
+--------------------------------------------------------------------------------
+
+icon.outline
+    type: boolean
+    fallback: enabled_outline_icon_osc
+
+icon.outline_color
+    type: color
+    fallback: color_outline_icon_osc
+
+icon.outline_alpha
+    type: opacity (two hex digits)
+    fallback: alpha_outline_icon_osc
+
+icon.outline_width
+    type: number
+    fallback: width_outline_icon_osc
+
+icon.outline_blur
+    type: number
+    fallback: blur_outline_icon_osc
+
+icon.shadow
+    type: boolean
+    fallback: enabled_shadow_icon_osc
+
+icon.shadow_color
+    type: color
+    fallback: color_shadow_icon_osc
+
+icon.shadow_alpha
+    type: opacity (two hex digits)
+    fallback: alpha_shadow_icon_osc
+
+icon.shadow_x
+    type: number
+    fallback: offset_x_shadow_icon_osc
+
+icon.shadow_y
+    type: number
+    fallback: offset_y_shadow_icon_osc
+
+icon.shadow_blur
+    type: number
+    fallback: blur_shadow_icon_osc
+
+--------------------------------------------------------------------------------
+ROW BUTTON DECORATION
+--------------------------------------------------------------------------------
+
+button.background
+    type: boolean
+    fallback: enabled_icon_bg_osc
+
+button.color
+    type: color
+    fallback: color_bg_icon_osc
+
+button.gradient_color
+    type: color
+    default: nil
+
+button.gradient_type
+    type: enum
+    values: "left_to_right", "top_to_bottom", "circular"
+
+button.alpha
+    type: opacity (two hex digits)
+    fallback: alpha_bg_icon_osc
+
+button.padding
+    type: number
+    fallback: pad_x_bg_icon_osc
+
+button.height
+    type: number
+    fallback: height_bg_icon_osc
+
+button.radius
+    type: number
+    fallback: radius_bg_icon_osc
+
+button.border
+    type: boolean
+    fallback: enabled_border_icon_osc
+
+button.border_color
+    type: color
+    fallback: color_border_icon_osc
+
+button.border_alpha
+    type: opacity (two hex digits)
+    fallback: alpha_border_icon_osc
+
+button.border_width
+    type: number
+    fallback: width_border_icon_osc
+
+button.border_sides
+    type: table
+    default: nil
+    meaning: Selects border sides. Omit it to draw all sides.
+
+button.separator_width
+    type: number
+    fallback: width_separator_osc
+
+button.separator_height
+    type: number
+    fallback: height_separator_osc
+
+button.separator_radius
+    type: number
+    fallback: radius_separator_osc
+
+--------------------------------------------------------------------------------
+ROW GROUP DECORATION
+--------------------------------------------------------------------------------
+
+group.background
+    type: boolean
+    fallback: enabled_bg_icon_group_osc
+
+group.color
+    type: color
+    fallback: color_bg_icon_group_osc
+
+group.gradient_color
+    type: color
+    default: nil
+
+group.gradient_type
+    type: enum
+    values: "left_to_right", "top_to_bottom", "circular"
+
+group.alpha
+    type: opacity (two hex digits)
+    fallback: alpha_bg_icon_group_osc
+
+group.padding
+    type: number
+    fallback: pad_bg_icon_group_osc
+
+group.height
+    type: number
+    fallback: height_bg_icon_group_osc
+
+group.radius
+    type: number
+    fallback: radius_bg_icon_group_osc
+
+group.border
+    type: boolean
+    fallback: enabled_border_icon_group_osc
+
+group.border_color
+    type: color
+    fallback: color_border_icon_group_osc
+
+group.border_alpha
+    type: opacity (two hex digits)
+    fallback: alpha_border_icon_group_osc
+
+group.border_width
+    type: number
+    fallback: width_border_icon_group_osc
+
+group.border_sides
+    type: table
+    default: nil
+
+group.width
+    type: number or percentage string
+    meaning: Pixel value, or percentage of screen width such as "50%".
+             For anchored left/right groups, this sizes the background only.
+             It does not change button positions or other rows.
+
+--------------------------------------------------------------------------------
+GROUP OVERRIDE EXAMPLES
+--------------------------------------------------------------------------------
+
+M.osc_group_overrides = {
+    L = {
+        button = {
+            background = true,
+            color = "18212B",
+            alpha = "DF",
+            radius = 8,
+        },
+        group = {
+            background = false,
+            border = false,
+        },
+    },
+
+    C_center = {
+        button = {
+            background = false,
+            border = false,
+        },
+        group = {
+            background = true,
+            color = "18212B",
+            alpha = "DF",
+            padding = 12,
+            height = 56,
+            radius = 28,
+            border = true,
+            border_color = "FFFFFF",
+            border_alpha = "8F",
+            border_width = 1,
+        },
+    },
+}
+
+Full-width anchored header example:
+
+M.osc_group_overrides = {
+    L_top = {
+        group = {
+            background = true,
+            color = "000000",
+            alpha = "BF",
+            width = "50%",
+            padding = 0,
+            height = 80,
+            radius = 0,
+        },
+    },
+    R_top = {
+        group = {
+            background = true,
+            color = "000000",
+            alpha = "BF",
+            width = "50%",
+            padding = 0,
+            height = 80,
+            radius = 0,
+        },
+    },
+}
+
+Icon effect override example:
+
+M.osc_group_overrides = {
+    C_center = {
+        icon = {
+            outline = true,
+            outline_color = "FFFFFF",
+            outline_width = 1,
+            outline_blur = 0,
+            shadow_blur = 0,
+        },
+    },
+}
+
+================================================================================
+
+================================================================================
+GLOBAL / SHARED KEYS (26)
+================================================================================
+
+alpha_chapter_mark
+    type: opacity (two hex digits)
+    fallback chain: "00"
+    literal/default fallback: "00"
+
+chapter_hover_px
+    type: number
+    fallback chain: 8
+    literal/default fallback: 8
+
+chapter_mark_width
+    type: number
+    fallback chain: 2
+    literal/default fallback: 2
+
+chapter_tooltip_bg_alpha
+    type: opacity (two hex digits)
+    fallback chain: "FF"
+    literal/default fallback: "FF"
+
+chapter_tooltip_bg_color
+    type: string
+    fallback chain: background_color -> "0A0C10"
+    literal/default fallback: "0A0C10"
+
+chapter_tooltip_pad_x
+    type: number
+    fallback chain: 8
+    literal/default fallback: 8
+
+chapter_tooltip_pad_y
+    type: number
+    fallback chain: 10
+    literal/default fallback: 10
+
+chapter_tooltip_radius
+    type: number
+    fallback chain: 8
+    literal/default fallback: 8
+
+chapter_tooltip_size
+    type: number
+    fallback chain: 18
+    literal/default fallback: 18
+
+chapter_tooltip_text_alpha
+    type: opacity (two hex digits)
+    fallback chain: "FF"
+    literal/default fallback: "FF"
+
+chapter_tooltip_text_color
+    type: string
+    fallback chain: "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_chapter_mark
+    type: color
+    fallback chain: background_color -> "0A0C10"
+    literal/default fallback: "0A0C10"
+
+font_chapter_tooltip
+    type: string
+    fallback chain: font_text -> "Inter"
+    literal/default fallback: "Inter"
+
+font_ui
+    type: string
+    fallback chain: font_text -> font_text_osc -> "Inter"
+    literal/default fallback: "Inter"
+
+height_hover_seekbar
+    type: number
+    fallback chain: 10
+    literal/default fallback: 10
+
+height_normal_seekbar
+    type: number
+    fallback chain: 6
+    literal/default fallback: 6
+
+height_thumb_seekbar_osc
+    type: number
+    fallback chain: 10
+    literal/default fallback: 10
+
+icon_codepoints
+    type: table
+    fallback/default: nil
+    purpose: Optional icon-name -> Unicode codepoint overrides.
+             Nil uses the component's built-in icon map.
+
+osc_slot_overrides
+    type: table
+    fallback/default: nil / treated as empty
+    purpose: Per-slot OSC appearance overrides.
+
+osc_layout
+    type: table
+    fallback/default: nil
+    purpose: Optional structured OSC button-row and seekbar placement.
+
+osc_group_overrides
+    type: table
+    fallback/default: nil / treated as empty
+    purpose: Per-row or anchored-row OSC icon, button, and group overrides.
+
+popup_hover_color
+    type: string
+    fallback chain: color_bg_hover_osc -> color_hover_pl -> accent_color -> "63B8FF"
+    literal/default fallback: "63B8FF"
+
+radius_thumb_seekbar_osc
+    type: number
+    fallback chain: 5
+    literal/default fallback: 5
+
+color_thumb_seekbar_osc
+    type: string
+    fallback chain: color_track_fg_osc -> accent_color -> "F8FAFC"
+    literal/default fallback: "F8FAFC"
+
+width_thumb_seekbar_osc
+    type: number
+    fallback chain: 4
+    literal/default fallback: 4
+
+alpha_popup_hover
+    type: opacity (two hex digits)
+    fallback/default: "1F"
+    purpose: Hover highlight opacity for OSC popup rows and Playlist Add-popup rows.
+
+enabled_glass_blur_add_popup
+    type: boolean / nil
+    fallback/default: nil -> resolved Playlist glass blur
+    purpose: Playlist Add-popup glass toggle. This key has no _pl suffix.

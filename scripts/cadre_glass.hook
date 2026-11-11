@@ -1,0 +1,535 @@
+//!PARAM osc_blur
+//!TYPE DYNAMIC float
+//!MINIMUM 0.0
+//!MAXIMUM 80.0
+12.0
+//!PARAM playlist_blur
+//!TYPE DYNAMIC float
+//!MINIMUM 0.0
+//!MAXIMUM 80.0
+12.0
+//!PARAM titlebar_blur
+//!TYPE DYNAMIC float
+//!MINIMUM 0.0
+//!MAXIMUM 80.0
+12.0
+
+//!PARAM osc_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM osc_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM osc_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM osc_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM osc_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM osc_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM playlist_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM titlebar_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM titlebar_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM titlebar_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM titlebar_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM titlebar_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM titlebar_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM track_popup_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM track_popup_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM track_popup_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM track_popup_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM track_popup_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM track_popup_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM track_popup_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM volume_popup_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM volume_popup_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM volume_popup_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM volume_popup_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM volume_popup_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM volume_popup_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM volume_popup_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM add_popup_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM add_popup_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM add_popup_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM add_popup_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM add_popup_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM add_popup_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM add_popup_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM settings_dialog_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM settings_dialog_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM settings_dialog_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM settings_dialog_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM settings_dialog_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM settings_dialog_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM settings_dialog_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM playlist_add_popup_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM playlist_add_popup_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_add_popup_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_add_popup_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_add_popup_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_add_popup_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM playlist_add_popup_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM menu_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM menu_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM menu_sub1_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM menu_sub1_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub1_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub1_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub1_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub1_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub1_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM menu_sub2_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM menu_sub2_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub2_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub2_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub2_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub2_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub2_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM menu_sub3_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM menu_sub3_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub3_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub3_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub3_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub3_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub3_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM menu_sub4_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM menu_sub4_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub4_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub4_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub4_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub4_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub4_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM menu_sub5_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM menu_sub5_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub5_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub5_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub5_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub5_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub5_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM menu_sub6_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM menu_sub6_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub6_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub6_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub6_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub6_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub6_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM menu_sub7_blur
+//!TYPE DYNAMIC float
+12.0
+//!PARAM menu_sub7_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub7_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub7_x2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub7_y2
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub7_corner
+//!TYPE DYNAMIC float
+0.0
+//!PARAM menu_sub7_enabled
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM rotate_180
+//!TYPE DYNAMIC float
+0.0
+
+//!PARAM screen_w
+//!TYPE DYNAMIC float
+1.0
+//!PARAM screen_h
+//!TYPE DYNAMIC float
+1.0
+//!PARAM screen_aspect
+//!TYPE DYNAMIC float
+1.0
+//!PARAM video_x1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM video_y1
+//!TYPE DYNAMIC float
+0.0
+//!PARAM video_x2
+//!TYPE DYNAMIC float
+1.0
+//!PARAM video_y2
+//!TYPE DYNAMIC float
+1.0
+
+//!HOOK OUTPUT
+//!BIND HOOKED
+//!DESC Cadre glass backdrop blur
+
+float rounded_rect_mask(vec2 p, vec4 rect, float radius)
+{
+    vec2 half_size = (rect.zw - rect.xy) * 0.5;
+    vec2 center = (rect.xy + rect.zw) * 0.5;
+    float r = clamp(radius, 0.0, min(half_size.x, half_size.y));
+    vec2 q = abs(p - center) - (half_size - vec2(r));
+    float d = length(max(q, vec2(0.0))) + min(max(q.x, q.y), 0.0) - r;
+    return 1.0 - smoothstep(-0.5, 0.5, d);
+}
+
+vec4 gaussian_blur(float radius)
+{
+    vec4 sum = vec4(0.0);
+    float total_weight = 0.0;
+
+    // A denser kernel keeps larger radii from leaving gaps between samples.
+    // The outer taps sit at the configured radius (three sigma).
+    for (int y = -6; y <= 6; y++) {
+        for (int x = -6; x <= 6; x++) {
+            vec2 grid = vec2(float(x), float(y));
+            float weight = exp(-0.5 * dot(grid, grid) / 9.0);
+            vec2 offset = grid * (radius / 6.0);
+            sum += HOOKED_texOff(offset) * weight;
+            total_weight += weight;
+        }
+    }
+
+    return sum / total_weight;
+}
+
+vec4 hook()
+{
+    vec4 original = HOOKED_tex(HOOKED_pos);
+    vec2 video_min = vec2(video_x1, video_y1);
+    vec2 video_span = max(vec2(video_x2, video_y2) - video_min, vec2(0.0));
+    float hooked_aspect = HOOKED_size.x / max(HOOKED_size.y, 1.0);
+    float video_aspect = screen_aspect * video_span.x / max(video_span.y, 0.0001);
+    float video_aspect_delta = abs(log(hooked_aspect / max(video_aspect, 0.0001)));
+    float screen_aspect_delta = abs(log(hooked_aspect / max(screen_aspect, 0.0001)));
+    bool hooked_is_video_area = video_aspect_delta < screen_aspect_delta;
+
+    vec2 screen_uv = hooked_is_video_area
+        ? video_min + HOOKED_pos * video_span
+        : HOOKED_pos;
+    if (rotate_180 > 0.5) {
+        screen_uv = hooked_is_video_area
+            ? video_min + (vec2(1.0) - HOOKED_pos) * video_span
+            : vec2(1.0) - HOOKED_pos;
+    }
+
+    if (screen_uv.x < video_min.x || screen_uv.y < video_min.y
+        || screen_uv.x > video_min.x + video_span.x
+        || screen_uv.y > video_min.y + video_span.y)
+        return original;
+
+    vec2 size = vec2(screen_w, screen_h);
+    vec2 p = screen_uv * size;
+    float mask = 0.0;
+    float radius = 0.0;
+
+    if (osc_enabled > 0.5) {
+        vec4 rect = vec4(osc_x1 * size.x, osc_y1 * size.y, osc_x2 * size.x, osc_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, osc_corner);
+        if (candidate > mask) { mask = candidate; radius = osc_blur; }
+    }
+    if (playlist_enabled > 0.5) {
+        vec4 rect = vec4(playlist_x1 * size.x, playlist_y1 * size.y, playlist_x2 * size.x, playlist_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, playlist_corner);
+        if (candidate > mask) { mask = candidate; radius = playlist_blur; }
+    }
+    if (titlebar_enabled > 0.5) {
+        vec4 rect = vec4(titlebar_x1 * size.x, titlebar_y1 * size.y, titlebar_x2 * size.x, titlebar_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, titlebar_corner);
+        if (candidate > mask) { mask = candidate; radius = titlebar_blur; }
+    }
+    if (track_popup_enabled > 0.5) {
+        vec4 rect = vec4(track_popup_x1 * size.x, track_popup_y1 * size.y, track_popup_x2 * size.x, track_popup_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, track_popup_corner);
+        if (candidate > mask) { mask = candidate; radius = track_popup_blur; }
+    }
+    if (volume_popup_enabled > 0.5) {
+        vec4 rect = vec4(volume_popup_x1 * size.x, volume_popup_y1 * size.y, volume_popup_x2 * size.x, volume_popup_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, volume_popup_corner);
+        if (candidate > mask) { mask = candidate; radius = volume_popup_blur; }
+    }
+    if (add_popup_enabled > 0.5) {
+        vec4 rect = vec4(add_popup_x1 * size.x, add_popup_y1 * size.y, add_popup_x2 * size.x, add_popup_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, add_popup_corner);
+        if (candidate > mask) { mask = candidate; radius = add_popup_blur; }
+    }
+    if (settings_dialog_enabled > 0.5) {
+        vec4 rect = vec4(settings_dialog_x1 * size.x, settings_dialog_y1 * size.y, settings_dialog_x2 * size.x, settings_dialog_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, settings_dialog_corner);
+        if (candidate > mask) { mask = candidate; radius = settings_dialog_blur; }
+    }
+    if (playlist_add_popup_enabled > 0.5) {
+        vec4 rect = vec4(playlist_add_popup_x1 * size.x, playlist_add_popup_y1 * size.y, playlist_add_popup_x2 * size.x, playlist_add_popup_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, playlist_add_popup_corner);
+        if (candidate > mask) { mask = candidate; radius = playlist_add_popup_blur; }
+    }
+    if (menu_enabled > 0.5) {
+        vec4 rect = vec4(menu_x1 * size.x, menu_y1 * size.y, menu_x2 * size.x, menu_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, menu_corner);
+        if (candidate > mask) { mask = candidate; radius = menu_blur; }
+    }
+    if (menu_sub1_enabled > 0.5) {
+        vec4 rect = vec4(menu_sub1_x1 * size.x, menu_sub1_y1 * size.y, menu_sub1_x2 * size.x, menu_sub1_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, menu_sub1_corner);
+        if (candidate > mask) { mask = candidate; radius = menu_sub1_blur; }
+    }
+    if (menu_sub2_enabled > 0.5) {
+        vec4 rect = vec4(menu_sub2_x1 * size.x, menu_sub2_y1 * size.y, menu_sub2_x2 * size.x, menu_sub2_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, menu_sub2_corner);
+        if (candidate > mask) { mask = candidate; radius = menu_sub2_blur; }
+    }
+    if (menu_sub3_enabled > 0.5) {
+        vec4 rect = vec4(menu_sub3_x1 * size.x, menu_sub3_y1 * size.y, menu_sub3_x2 * size.x, menu_sub3_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, menu_sub3_corner);
+        if (candidate > mask) { mask = candidate; radius = menu_sub3_blur; }
+    }
+    if (menu_sub4_enabled > 0.5) {
+        vec4 rect = vec4(menu_sub4_x1 * size.x, menu_sub4_y1 * size.y, menu_sub4_x2 * size.x, menu_sub4_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, menu_sub4_corner);
+        if (candidate > mask) { mask = candidate; radius = menu_sub4_blur; }
+    }
+    if (menu_sub5_enabled > 0.5) {
+        vec4 rect = vec4(menu_sub5_x1 * size.x, menu_sub5_y1 * size.y, menu_sub5_x2 * size.x, menu_sub5_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, menu_sub5_corner);
+        if (candidate > mask) { mask = candidate; radius = menu_sub5_blur; }
+    }
+    if (menu_sub6_enabled > 0.5) {
+        vec4 rect = vec4(menu_sub6_x1 * size.x, menu_sub6_y1 * size.y, menu_sub6_x2 * size.x, menu_sub6_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, menu_sub6_corner);
+        if (candidate > mask) { mask = candidate; radius = menu_sub6_blur; }
+    }
+    if (menu_sub7_enabled > 0.5) {
+        vec4 rect = vec4(menu_sub7_x1 * size.x, menu_sub7_y1 * size.y, menu_sub7_x2 * size.x, menu_sub7_y2 * size.y);
+        float candidate = rounded_rect_mask(p, rect, menu_sub7_corner);
+        if (candidate > mask) { mask = candidate; radius = menu_sub7_blur; }
+    }
+
+    if (mask <= 0.0 || radius <= 0.0)
+        return original;
+
+    return mix(original, gaussian_blur(radius), mask);
+}

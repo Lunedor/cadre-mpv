@@ -1,0 +1,628 @@
+===========================================================================
+PLAYLIST KEYS (64)
+===========================================================================
+
+alpha_bg_frame_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_bg_frame_pl -> resolved panel background alpha
+    purpose: Controls frame alpha for this component.
+
+alpha_bg_list_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_bg_list_pl -> resolved panel background alpha
+    purpose: Controls list alpha for this component.
+
+alpha_bg_row_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_bg_row_pl -> resolved list background alpha -> "E7"
+    purpose: Controls row bg alpha for this component.
+
+alpha_border_panel_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_border_panel_pl -> border_all_alpha -> "00"
+    purpose: Controls panel border alpha for this component.
+
+alpha_duration_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_duration_pl -> "FF"
+    purpose: Controls duration alpha for this component.
+
+alpha_hover_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_hover_pl -> "BF"
+    purpose: Controls hover alpha for this component.
+
+alpha_icon_dim_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_icon_dim_pl -> alpha_icon_dim -> "9F"
+    purpose: Controls icon dim a for this component.
+
+alpha_index_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_index_pl -> "CF"
+    purpose: Controls index alpha for this component.
+
+alpha_panel_bg_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_panel_bg_pl -> alpha_panel_bg -> "E7"
+    purpose: Controls alpha bar bg for this component.
+
+alpha_row_current_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_row_current_pl -> "77"
+    purpose: Controls current alpha for this component.
+
+alpha_row_selected_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_row_selected_pl -> "9F"
+    purpose: Controls selected alpha for this component.
+
+alpha_shadow_frame_pl
+    type: opacity (two hex digits)
+    fallback/default: alpha_shadow_frame_pl -> "8F"
+    purpose: Controls frame shadow alpha for this component.
+
+blur_shadow_frame_pl
+    type: number
+    fallback/default: blur_shadow_frame_pl -> 0
+    purpose: Frame-shadow blur is clamped to a minimum of 0.
+
+color_bg_frame_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_bg_frame_pl -> surface_color_pl -> surface_color -> "0B0E14"
+    purpose: Controls frame bg for this component.
+
+color_bg_list_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_bg_list_pl -> surface_color_pl -> surface_color -> "0B0E14"
+    purpose: Controls list bg for this component.
+
+color_bg_row_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_bg_row_pl -> resolved list background color -> resolved panel surface color -> "0B0E14"
+    purpose: Fallback uses the already-resolved internal list/panel colors, not a generic text-color fallback.
+
+color_border_panel_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_border_panel_pl -> border_all_color -> "FFFFFF"
+    purpose: Controls panel border color for this component.
+
+color_danger_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_danger_pl -> danger_color -> "EF4444"
+    purpose: Controls danger for this component.
+
+color_dim_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_dim_pl -> dim_color -> "64748B"
+    purpose: Controls dim for this component.
+
+color_drop_line_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_drop_line_pl -> color_text_pl -> text_color -> "F8FAFC"
+    purpose: Controls drop line for this component.
+
+color_duration_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_duration_pl -> color_dim_pl -> dim_color -> "CBD5E1"
+    purpose: Controls duration color for this component.
+
+color_hover_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_hover_pl -> "252A31"
+    purpose: Controls hover color for this component.
+
+color_icon_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_icon_pl -> text_color -> "CBD5E1"
+    purpose: Controls icon color for this component.
+
+color_index_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_index_pl -> color_dim_pl -> dim_color -> "CBD5E1"
+    purpose: Controls index color for this component.
+
+color_row_current_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_row_current_pl -> accent_color -> "63B8FF"
+    purpose: Controls now playing color for this component.
+
+color_row_selected_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_row_selected_pl -> accent_color -> "63B8FF"
+    purpose: Controls selected color for this component.
+
+color_scroll_bg_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_scroll_bg_pl -> "0F172A"
+    purpose: Controls scroll bg for this component.
+
+color_scroll_fg_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_scroll_fg_pl -> "475569"
+    purpose: Controls scroll fg for this component.
+
+color_shadow_frame_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_shadow_frame_pl -> "000000"
+    purpose: Controls frame shadow color for this component.
+
+color_text_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_text_pl -> text_color -> "F8FAFC"
+    purpose: Controls text for this component.
+
+enabled_glass_blur_pl
+    type: boolean; nil inherits only where stated
+    fallback/default: nil -> shared glass_blur; explicit true/false overrides
+    purpose: nil inherits glass_blur == true; explicit false disables; true enables.
+
+enabled_shadow_frame_pl
+    type: boolean; nil inherits only where stated
+    fallback/default: false (strict true test)
+    purpose: True enables the playlist frame shadow; false/nil disable it.
+
+exclusion_bottom_osc_pl
+    type: number
+    fallback/default: exclusion_bottom_osc_pl -> exclusion_bottom_osc -> 125
+    purpose: Height of the bottom band excluded from right-edge hover opening; not added to playlist bottom inset.
+
+font_icon_pl
+    type: font-name string
+    fallback/default: font_icon_pl -> font_icon -> "Material Icons Outlined"
+    purpose: Controls icon font for this component.
+
+gap_row_pl
+    type: number
+    fallback/default: gap_row_pl -> 2
+    purpose: Subtracted from painted row height; does not increase row pitch.
+
+height_header_pl
+    type: number
+    fallback/default: height_header_pl -> header_height -> 42
+    purpose: Controls header height for this component.
+
+height_row_pl
+    type: number
+    fallback/default: height_row_pl -> row_height -> 42
+    purpose: Row pitch. Painted row height is max(1, pitch minus gap_row_pl).
+
+height_search_pl
+    type: number
+    fallback/default: height_search_pl -> search_height -> 40
+    purpose: Controls search height for this component.
+
+height_toolbar_pl
+    type: number
+    fallback/default: height_toolbar_pl -> toolbar_height -> 42
+    purpose: Controls toolbar height for this component.
+
+hide_delay_sec_pl
+    type: number
+    fallback/default: hide_delay_sec_pl -> hide_delay_sec -> 0.35
+    purpose: Controls hide delay sec for this component.
+
+inset_bottom_pl
+    type: number
+    fallback/default: inset_bottom_pl -> bottom_inset -> 115
+    purpose: Window-bottom clearance for panel geometry: panel bottom = screen height minus this value.
+
+inset_left_list_pl
+    type: number
+    fallback/default: inset_left_list_pl -> 8
+    purpose: Controls list inset left for this component.
+
+inset_right_list_pl
+    type: number
+    fallback/default: inset_right_list_pl -> 8
+    purpose: Controls list inset right for this component.
+
+inset_side_pl
+    type: number
+    fallback/default: inset_side_pl -> side_inset -> 16
+    purpose: Right-side window clearance; panel is right anchored.
+
+inset_top_pl
+    type: number
+    fallback/default: inset_top_pl -> top_inset -> 48
+    purpose: Window-coordinate panel top; not automatically derived from titlebar height.
+
+inset_x_right_row_pl
+    type: number
+    fallback/default: inset_x_right_row_pl -> 16
+    purpose: Controls row right inset x for this component.
+
+offset_x_title_pl
+    type: number
+    fallback/default: offset_x_title_pl -> 42
+    purpose: Controls title offset x for this component.
+
+pad_x_row_pl
+    type: number
+    fallback/default: pad_x_row_pl -> 16
+    purpose: Controls row padding x for this component.
+
+position_title_pl
+    type: enum string; accepted values described below
+    fallback/default: position_title_pl -> "left"
+    purpose: Playlist HEADER title alignment, not row filename alignment. "center" centers; all other values use the left branch. Author with "left" or "center".
+
+radius_glass_blur_pl
+    type: number
+    fallback/default: radius_glass_blur_pl -> radius_glass_blur -> 12
+    purpose: Controls glass blur radius for this component.
+
+radius_list_pl
+    type: number
+    fallback/default: radius_list_pl -> 6
+    purpose: Controls list radius for this component.
+
+radius_panel_pl
+    type: number
+    fallback/default: radius_panel_pl -> panel_radius -> 20
+    purpose: Controls radius for this component.
+
+radius_row_pl
+    type: number
+    fallback/default: radius_row_pl -> 6
+    purpose: Controls row radius for this component.
+
+size_font_pl
+    type: number
+    fallback/default: size_font_pl -> font_size -> 16
+    purpose: Controls font size for this component.
+
+size_font_title_pl
+    type: number
+    fallback/default: size_font_title_pl -> size_font_title -> font_size -> 18
+    purpose: Controls title font size for this component.
+
+size_icon_pl
+    type: number
+    fallback/default: size_icon_pl -> 18
+    purpose: Controls icon size for this component.
+
+size_icon_toolbar_pl
+    type: number
+    fallback/default: size_icon_toolbar_pl -> 20
+    purpose: Controls toolbar icon size for this component.
+
+size_shadow_frame_pl
+    type: number
+    fallback/default: size_shadow_frame_pl -> 5
+    purpose: Controls frame shadow size for this component.
+
+spacing_icon_toolbar_pl
+    type: number
+    fallback/default: spacing_icon_toolbar_pl -> 34
+    purpose: Controls toolbar icon spacing for this component.
+
+surface_color_pl
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: surface_color_pl -> surface_color -> "0B0E14"
+    purpose: Controls barbg for this component.
+
+width_border_panel_pl
+    type: number
+    fallback/default: width_border_panel_pl -> border_all_width -> 0
+    purpose: Controls panel border width for this component.
+
+width_hover_strip_pl
+    type: number
+    fallback/default: width_hover_strip_pl -> hover_strip_width -> 16
+    purpose: Controls hover strip width for this component.
+
+width_panel_pl
+    type: number
+    fallback/default: width_panel_pl -> panel_width -> 420
+    purpose: Playlist width; left edge = screen width minus side inset minus width. No responsive width clamp is assumed.
+
+width_scrollbar_pl
+    type: number
+    fallback/default: width_scrollbar_pl -> scrollbar_width -> 4
+    purpose: Controls scrollbar width for this component.
+
+===========================================================================
+TITLEBAR KEYS (28)
+===========================================================================
+
+alpha_bg_button_pressed_tb
+    type: opacity (two hex digits)
+    fallback/default: alpha_bg_button_pressed_tb -> "C7"
+    purpose: Controls alpha button pressed for this component.
+
+alpha_bg_button_tb
+    type: opacity (two hex digits)
+    fallback/default: alpha_bg_button_tb -> "DF"
+    purpose: Also supplies corrected alpha_bg_hover_tb fallback; do not assume permanent normal-button backgrounds are drawn.
+
+alpha_bg_close_tb
+    type: opacity (two hex digits)
+    fallback/default: alpha_bg_close_tb -> "8F"
+    purpose: Controls alpha close bg for this component.
+
+alpha_bg_hover_tb
+    type: opacity (two hex digits)
+    fallback/default: alpha_bg_hover_tb -> resolved normal-button background alpha
+    purpose: Controls alpha button hover for this component.
+
+alpha_border_panel_tb
+    type: opacity (two hex digits)
+    fallback/default: alpha_border_panel_tb -> border_all_alpha -> "00"
+    purpose: Controls bar border alpha for this component.
+
+alpha_panel_bg_tb
+    type: opacity (two hex digits)
+    fallback/default: alpha_panel_bg_tb -> alpha_panel_bg -> "C7"
+    purpose: Controls alpha bar bg for this component.
+
+color_bg_button_pressed_tb
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_bg_button_pressed_tb -> color_bg_button_tb -> "181C26"
+    purpose: Controls button pressedbg for this component.
+
+color_bg_button_tb
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_bg_button_tb -> color_bg_hover_tb -> "181C26"
+    purpose: Used as a fallback for hover/pressed colors. Normal titlebar buttons are not drawn as permanently filled boxes by this renderer.
+
+color_bg_close_tb
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_bg_close_tb -> color_danger_tb -> "EF4444"
+    purpose: Controls closebg for this component.
+
+color_bg_hover_tb
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_bg_hover_tb -> "181C26"
+    purpose: Controls buttonbg for this component.
+
+color_border_panel_tb
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_border_panel_tb -> border_all_color -> "FFFFFF"
+    purpose: Controls bar border color for this component.
+
+color_danger_tb
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_danger_tb -> "EF4444"
+    purpose: Fallback-only input for the close-button background; not a global titlebar text color.
+
+color_text_tb
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: color_text_tb -> text_color -> "E2E8F0"
+    purpose: Controls text for this component.
+
+enabled_glass_blur_tb
+    type: boolean; nil inherits only where stated
+    fallback/default: nil -> shared glass_blur; explicit true/false overrides
+    purpose: nil inherits glass_blur == true; explicit false disables; true enables.
+
+height_hover_strip_tb
+    type: number
+    fallback/default: height_hover_strip_tb -> 10
+    purpose: Controls hover strip height for this component.
+
+height_panel_tb
+    type: number
+    fallback/default: height_panel_tb -> 36
+    purpose: Full-width titlebar height at window y=0; fullscreen hides it.
+
+hide_delay_sec_tb
+    type: number
+    fallback/default: hide_delay_sec_tb -> 0.35
+    purpose: Controls hide delay sec for this component.
+
+maximize_cooldown_sec_tb
+    type: number
+    fallback/default: maximize_cooldown_sec_tb -> 0.3
+    purpose: Controls maximize cooldown sec for this component.
+
+mode_show_titlebar_tb
+    type: enum string; accepted values described below
+    fallback/default: mode_show_titlebar_tb -> mode_show_titlebar -> "auto"
+    purpose: Use "auto" or "always". "always" pins visibility at initialization; fullscreen still hides the titlebar.
+
+radius_button_tb
+    type: number
+    fallback/default: radius_button_tb -> 4
+    purpose: Controls button radius for this component.
+
+radius_close_button_tb
+    type: number
+    fallback/default: radius_close_button_tb -> 4
+    purpose: Controls close button radius for this component.
+
+radius_glass_blur_tb
+    type: number
+    fallback/default: radius_glass_blur_tb -> radius_glass_blur -> 12
+    purpose: Controls glass blur radius for this component.
+
+side_button_titlebar_tb
+    type: enum string; accepted values described below
+    fallback/default: side_button_titlebar_tb -> side_button_titlebar -> "left" when macos style, otherwise "right"
+    purpose: Author with "left" or "right". Left orders close/minimize/maximize; right orders minimize/maximize/close. Default depends on button style.
+
+size_font_title_tb
+    type: number
+    fallback/default: size_font_title_tb -> size_font_title -> font_size -> 18
+    purpose: Controls title font size for this component.
+
+style_button_titlebar_tb
+    type: enum string; accepted values described below
+    fallback/default: "symbols"; only exact "macos" selects macos
+    purpose: "macos" selects traffic lights; any other value yields "symbols". Author with "macos" or "symbols".
+
+surface_color_tb
+    type: RGB color: six hexadecimal digits, no #
+    fallback/default: surface_color_tb -> surface_color -> "07080B"
+    purpose: Controls barbg for this component.
+
+width_border_panel_tb
+    type: number
+    fallback/default: width_border_panel_tb -> border_all_width -> 0
+    purpose: Controls bar border width for this component.
+
+width_button_tb
+    type: number
+    fallback/default: width_button_tb -> 44
+    purpose: Each of three titlebar button hit regions has this width.
+
+===========================================================================
+MENU KEYS (22)
+===========================================================================
+
+font_text_mn
+    type: font-name string
+    fallback/default: font_text_mn -> font_ui -> font_text -> "Inter"
+    purpose: Menu text font.
+
+size_font_mn
+    type: number
+    fallback/default: size_font_mn -> font_size -> 16; clamp 8..64
+    purpose: Menu text size.
+
+height_item_menu_mn
+    type: number
+    fallback/default: 34; clamp 16..96
+    purpose: Item row height.
+
+pad_menu_mn
+    type: number
+    fallback/default: 8; clamp 2..32
+    purpose: Menu padding.
+
+width_menu_mn
+    type: number
+    fallback/default: 250; clamp 140..max(140, screen_width-8)
+    purpose: Menu width subject to window bounds.
+
+max_visible_items_menu_mn
+    type: number
+    fallback/default: 16; clamp 3..40
+    purpose: Maximum visible rows requested; viewport logic can further limit visible rows.
+
+surface_color_mn
+    type: RGB color
+    fallback/default: surface_color_mn -> surface_color -> surface_color_osc -> "111820"
+    purpose: Menu background.
+
+color_text_mn
+    type: RGB color
+    fallback/default: color_text_mn -> text_color -> "F8FAFC"
+    purpose: Primary menu text.
+
+color_dim_mn
+    type: RGB color
+    fallback/default: color_dim_mn -> dim_color -> color_icon_dim_osc -> "9299A3"
+    purpose: Secondary menu text.
+
+color_selected_mn
+    type: RGB color
+    fallback/default: color_selected_mn -> accent_color -> "63B8FF"
+    purpose: Selected-item background.
+
+alpha_panel_bg_mn
+    type: opacity
+    fallback/default: alpha_panel_bg_mn -> alpha_panel_bg -> "E7"; malformed values resolve to opaque ASS alpha "00"
+    purpose: Menu background transparency.
+
+alpha_selected_mn
+    type: opacity
+    fallback/default: "A7"; malformed values resolve to opaque ASS alpha "00"
+    purpose: Selected-item background transparency.
+
+color_scroll_bg_mn
+    type: RGB color
+    fallback/default: "64748B"
+    purpose: Scrollbar rail color.
+
+color_scroll_fg_mn
+    type: RGB color
+    fallback/default: color_scroll_fg_mn -> accent_color -> "63B8FF"
+    purpose: Scrollbar thumb color.
+
+alpha_scroll_bg_mn
+    type: opacity
+    fallback/default: "47"; malformed values resolve to opaque ASS alpha "00"
+    purpose: Scrollbar rail transparency.
+
+radius_menu_mn
+    type: number
+    fallback/default: radius_menu_mn -> panel_radius -> 8; clamp 0..20
+    purpose: Menu corner radius.
+
+color_border_menu_mn
+    type: RGB color
+    fallback/default: color_border_menu_mn -> border_all_color -> "FFFFFF"
+    purpose: Menu outline color.
+
+alpha_border_menu_mn
+    type: opacity
+    fallback/default: alpha_border_menu_mn -> border_all_alpha -> "00"; malformed values resolve to opaque ASS alpha "00"
+    purpose: Menu outline transparency.
+
+width_border_menu_mn
+    type: number
+    fallback/default: width_border_menu_mn -> border_all_width -> 0; clamp 0..20
+    purpose: Menu outline width.
+
+enabled_glass_blur_menu_mn
+    type: boolean / nil
+    fallback/default: nil -> glass_blur == true; explicit true/false overrides
+    purpose: Enable glass region for menu.
+
+radius_glass_blur_menu_mn
+    type: number
+    fallback/default: radius_glass_blur_menu_mn -> radius_glass_blur -> 12
+    purpose: Glass blur radius.
+
+scrollbar_width_mn
+    type: number
+    fallback/default: 4; clamp 2..min(10, resolved_menu_width/8)
+    purpose: Scrollbar width; exact current spelling is scrollbar_width_mn.
+
+COMPONENT GEOMETRY AND FIXED BEHAVIOR
+====================================
+PLAYLIST
+The panel is right anchored. x2 = window_width - inset_side_pl;
+x1 = x2 - width_panel_pl; y1 = inset_top_pl;
+y2 = window_height - inset_bottom_pl.
+Header ends at y1 + height_header_pl. The search area is present only while search
+is active. The toolbar occupies the bottom height_toolbar_pl units.
+The list begins 4 units after header/search and ends 4 units above the toolbar.
+Visible row count is floor(list_height / height_row_pl).
+The bottom OSC exclusion controls edge-hover opening, not playlist panel height.
+No theme panel_height_pl lookup exists in this version.
+
+TITLEBAR
+Full width, top y=0. Left controls leave the title centered in remaining width;
+right controls place the title at x=16. The bar hides in fullscreen.
+Traffic-light dot diameter and colors are hardcoded (14 units, standard red/yellow/
+green), not theme controls. Symbol icons use Segoe MDL2 Assets.
+Only the shown loader branches establish supported style/side behavior.
+
+MENU
+Menu width and row counts are clamped at render time. Use the listed render-time
+defaults, not pre-render state constants. Invalid alpha strings reset locally.
+Menu actions/content belong to menu.conf, not theme fields. Do not turn commands,
+script options, or internal variables into invented theme keys.
+
+CROSS-COMPONENT SHARED FALLBACKS
+Global/shared keys used by playlist/titlebar/menu include text_color, dim_color,
+danger_color, surface_color, accent_color, font_size, font_text, font_ui, font_icon,
+size_font_title, alpha_panel_bg, alpha_icon_dim, panel_radius, glass_blur,
+radius_glass_blur, border_all_color, border_all_alpha, border_all_width.
+Playlist also explicitly reads shared fallbacks row_height,
+header_height, search_height, toolbar_height, panel_width, side_inset, top_inset,
+bottom_inset, scrollbar_width, hover_strip_width, hide_delay_sec,
+exclusion_bottom_osc. These are supported fallback names in that loader; their
+presence does not imply equivalent old *_pl spellings are accepted.
+Titlebar supports mode_show_titlebar and side_button_titlebar shared fallbacks.
+
+PLAYLIST ADD-POPUP / CROSS-SCOPE SETTINGS
+Playlist Add popup shares documented OSC popup colors/borders and uses
+popup_hover_color -> color_bg_hover_osc -> color_hover_pl -> accent_color ->
+"63B8FF". alpha_popup_hover defaults to "1F".
+Its glass toggle is EXACTLY enabled_glass_blur_add_popup (no scope suffix in this
+playlist source), inheriting resolved playlist glass when nil. Its blur radius is
+radius_glass_blur_add_popup_osc -> resolved playlist blur radius.
+Do not silently normalize the unsuffixed toggle into a different key.

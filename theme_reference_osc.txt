@@ -1,0 +1,1063 @@
+================================================================================
+OSC KEYS (201)
+================================================================================
+
+align_button_group_center_osc
+    type: enum
+    values: start, center, end
+    fallback/default:
+        left group   -> start
+        center group -> center
+        right group  -> end
+
+align_button_group_left_osc
+    type: enum
+    values: start, center, end
+    fallback/default:
+        left group   -> start
+        center group -> center
+        right group  -> end
+
+align_button_group_right_osc
+    type: enum
+    values: start, center, end
+    fallback/default:
+        left group   -> start
+        center group -> center
+        right group  -> end
+
+align_volume_slider_osc
+    type: enum
+    fallback chain: "center"
+    literal/default fallback: "center"
+
+alpha_bg_add_popup_osc
+    type: opacity (two hex digits)
+    fallback chain: alpha_panel_bg -> "E3"
+    literal/default fallback: "E3"
+
+alpha_bg_icon_group_osc
+    type: opacity (two hex digits)
+    fallback chain: "BF"
+    literal/default fallback: "BF"
+
+alpha_bg_icon_osc
+    type: opacity (two hex digits)
+    fallback chain: "DF"
+    literal/default fallback: "DF"
+
+alpha_bg_settings_dialog_osc
+    type: opacity (two hex digits)
+    fallback chain: "FF"
+    literal/default fallback: "FF"
+
+alpha_bg_time_tooltip_seekbar_osc
+    type: opacity (two hex digits)
+    fallback chain: chapter_tooltip_bg_alpha -> "FF"
+    literal/default fallback: "FF"
+
+alpha_bg_track_popup_osc
+    type: opacity (two hex digits)
+    fallback chain: alpha_panel_bg -> "E3"
+    literal/default fallback: "E3"
+
+alpha_bg_volume_popup_osc
+    type: opacity (two hex digits)
+    fallback chain: alpha_panel_bg -> "E3"
+    literal/default fallback: "E3"
+
+alpha_border_add_popup_osc
+    type: opacity (two hex digits)
+    fallback chain: border_all_alpha -> "00"
+    literal/default fallback: "00"
+
+alpha_border_icon_group_osc
+    type: opacity (two hex digits)
+    fallback chain: "00"
+    literal/default fallback: "00"
+
+alpha_border_icon_osc
+    type: opacity (two hex digits)
+    fallback chain: "00"
+    literal/default fallback: "00"
+
+alpha_border_panel_osc
+    type: opacity (two hex digits)
+    fallback chain: border_all_alpha -> "00"
+    literal/default fallback: "00"
+
+alpha_border_seekbar_osc
+    type: opacity (two hex digits)
+    fallback chain: border_all_alpha -> "00"
+    literal/default fallback: "00"
+
+alpha_border_settings_dialog_osc
+    type: opacity (two hex digits)
+    fallback chain: border_all_alpha -> "4F"
+    literal/default fallback: "4F"
+
+alpha_border_thumb_osc
+    type: opacity (two hex digits)
+    fallback chain: border_all_alpha -> "00"
+    literal/default fallback: "00"
+
+alpha_border_track_popup_osc
+    type: opacity (two hex digits)
+    fallback chain: border_all_alpha -> "E3"
+    literal/default fallback: "E3"
+
+alpha_border_volume_popup_osc
+    type: opacity (two hex digits)
+    fallback chain: border_all_alpha -> "00"
+    literal/default fallback: "00"
+
+alpha_icon_dim_osc
+    type: opacity (two hex digits)
+    fallback chain: alpha_icon_dim -> "9F"
+    literal/default fallback: "9F"
+
+alpha_outline_icon_osc
+    type: opacity (two hex digits)
+    fallback chain: "FF"
+    literal/default fallback: "FF"
+
+alpha_outline_time_label_osc
+    type: opacity (two hex digits)
+    fallback chain: "CF"
+    literal/default fallback: "CF"
+
+alpha_outline_title_osc
+    type: opacity (two hex digits)
+    fallback chain: "CF"
+    literal/default fallback: "CF"
+
+alpha_panel_bg_osc
+    type: opacity (two hex digits)
+    fallback chain: alpha_panel_bg -> "E3"
+    literal/default fallback: "E3"
+
+alpha_shadow_icon_osc
+    type: opacity (two hex digits)
+    fallback chain: "BF"
+    literal/default fallback: "BF"
+
+alpha_shadow_time_label_osc
+    type: opacity (two hex digits)
+    fallback chain: "BF"
+    literal/default fallback: "BF"
+
+alpha_shadow_title_osc
+    type: opacity (two hex digits)
+    fallback chain: "BF"
+    literal/default fallback: "BF"
+
+alpha_text_time_tooltip_seekbar_osc
+    type: opacity (two hex digits)
+    fallback chain: chapter_tooltip_text_alpha -> "FF"
+    literal/default fallback: "FF"
+
+alpha_title_osc
+    type: opacity (two hex digits)
+    fallback chain: "FF"
+    literal/default fallback: "FF"
+
+anchor_y_button_osc
+    type: enum
+    values: bottom, center, top
+    fallback chain: "center"
+    literal/default fallback: "center"
+
+anchor_y_panel_osc
+    type: enum
+    values: bottom, center, top
+    fallback/default: bottom
+
+autohide_sec_panel_osc
+    type: number
+    fallback chain: autohide_sec_panel -> 0.4
+    literal/default fallback: 0.4
+
+color_accent_track_popup_osc
+    type: color
+    fallback chain: color_track_fg_osc -> accent_color -> "63B8FF"
+    literal/default fallback: "63B8FF"
+
+color_bg_add_popup_osc
+    type: color
+    fallback chain: surface_color_osc -> surface_color -> "0D1117"
+    literal/default fallback: "0D1117"
+
+color_bg_icon_group_osc
+    type: color
+    fallback chain: surface_color -> "0D1117"
+    literal/default fallback: "0D1117"
+
+color_bg_icon_osc
+    type: color
+    fallback chain: surface_color -> "0D1117"
+    literal/default fallback: "0D1117"
+
+color_bg_settings_dialog_osc
+    type: color
+    fallback chain: surface_color_osc -> surface_color -> "0D1117"
+    literal/default fallback: "0D1117"
+
+color_bg_time_tooltip_seekbar_osc
+    type: color
+    fallback chain: chapter_tooltip_bg_color -> background_color -> "0A0C10"
+    literal/default fallback: "0A0C10"
+
+color_bg_track_popup_osc
+    type: color
+    fallback chain: surface_color_osc -> surface_color -> "0D1117"
+    literal/default fallback: "0D1117"
+
+color_bg_volume_popup_osc
+    type: color
+    fallback chain: surface_color_osc -> surface_color -> "0D1117"
+    literal/default fallback: "0D1117"
+
+color_border_add_popup_osc
+    type: color
+    fallback chain: border_all_color -> "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_border_icon_group_osc
+    type: color
+    fallback chain: "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_border_icon_osc
+    type: color
+    fallback chain: "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_border_panel_osc
+    type: color
+    fallback chain: border_all_color -> "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_border_seekbar_osc
+    type: color
+    fallback chain: border_all_color -> "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_border_settings_dialog_osc
+    type: color
+    fallback chain: border_all_color -> "F8FAFC"
+    literal/default fallback: "F8FAFC"
+
+color_border_thumb_osc
+    type: color
+    fallback chain: border_all_color -> "000000"
+    literal/default fallback: "000000"
+
+color_border_track_popup_osc
+    type: color
+    fallback chain: border_all_color -> "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_border_volume_popup_osc
+    type: color
+    fallback chain: border_all_color -> "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_end_volume_slider_osc
+    type: color
+    fallback/default: nil
+    purpose: End color of the horizontal volume-slider fill gradient.
+             The start color is color_volume_slider_osc.
+             Nil draws a solid fill using color_volume_slider_osc.
+             The gradient direction is always left-to-right; it does not use
+             button_gradient_type.
+
+color_icon_osc
+    type: color
+    fallback chain: text_color -> "F8FAFC"
+    literal/default fallback: "F8FAFC"
+
+color_outline_icon_osc
+    type: color
+    fallback chain: "000000"
+    literal/default fallback: "000000"
+
+color_outline_time_label_osc
+    type: color
+    fallback chain: "000000"
+    literal/default fallback: "000000"
+
+color_outline_title_osc
+    type: color
+    fallback chain: "000000"
+    literal/default fallback: "000000"
+
+color_shadow_icon_osc
+    type: color
+    fallback chain: "000000"
+    literal/default fallback: "000000"
+
+color_shadow_time_label_osc
+    type: color
+    fallback chain: "000000"
+    literal/default fallback: "000000"
+
+color_shadow_title_osc
+    type: color
+    fallback chain: "000000"
+    literal/default fallback: "000000"
+
+color_slider_rail_osc
+    type: color
+    fallback chain: "1E293B"
+    literal/default fallback: "1E293B"
+
+color_text_osc
+    type: color
+    fallback chain: text_color -> "F8FAFC"
+    literal/default fallback: "F8FAFC"
+
+color_text_time_tooltip_seekbar_osc
+    type: color
+    fallback chain: chapter_tooltip_text_color -> "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_text_track_popup_osc
+    type: color
+    fallback chain: color_text_osc -> text_color -> "F8FAFC"
+    literal/default fallback: "F8FAFC"
+
+color_thumb_volume_slider_osc
+    type: color
+    fallback chain: color_volume_slider_osc -> "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+color_title_osc
+    type: color
+    fallback chain: color_text_osc -> text_color -> "F8FAFC"
+    literal/default fallback: "F8FAFC"
+
+color_track_bg_osc
+    type: color
+    fallback chain: "303845"
+    literal/default fallback: "303845"
+
+color_track_fg_osc
+    type: color
+    fallback chain: accent_color -> "63B8FF"
+    literal/default fallback: "63B8FF"
+
+color_track_volume_slider_osc
+    type: color
+    fallback chain: "444444"
+    literal/default fallback: "444444"
+
+color_volume_slider_osc
+    type: color
+    fallback chain: "FFFFFF"
+    literal/default fallback: "FFFFFF"
+
+enabled_bg_icon_group_osc
+    type: boolean
+    fallback chain: false
+    literal/default fallback: false
+
+enabled_border_hover_osc
+    type: boolean
+    fallback/default: true
+
+enabled_border_icon_group_osc
+    type: boolean
+    fallback chain: false
+    literal/default fallback: false
+
+enabled_border_icon_osc
+    type: boolean
+    fallback chain: false
+    literal/default fallback: false
+
+enabled_button_tooltip_osc
+    type: boolean
+    fallback chain: false
+    literal/default fallback: false
+
+enabled_chapter_tooltip_osc
+    type: boolean
+    fallback/default: false
+
+enabled_edge_labels_seekbar_osc
+    type: boolean
+    fallback/default: false
+    purpose: Default for both seekbar start and end time labels when their
+             individual label keys are nil.
+
+enabled_glass_blur_add_popup_osc
+    type: boolean / nil
+    fallback chain: nil -> resolved OSC glass blur
+    literal/default fallback: false
+    purpose: Glass blur for the OSC Add-media popup.
+             nil inherits enabled_glass_blur_osc; when that is also nil,
+             it inherits glass_blur. Explicit true/false overrides inheritance.
+
+enabled_glass_blur_osc
+    type: boolean / nil
+    fallback chain: nil -> glass_blur
+    literal/default fallback: false
+    purpose: Glass blur for the main OSC panel.
+             nil inherits glass_blur; explicit true/false overrides it.
+
+enabled_glass_blur_settings_dialog_osc
+    type: boolean / nil
+    fallback chain: nil -> resolved OSC glass blur
+    literal/default fallback: false
+    purpose: Glass blur for the OSC Settings dialog.
+             nil inherits enabled_glass_blur_osc, then glass_blur.
+
+enabled_glass_blur_track_popup_osc
+    type: boolean / nil
+    fallback chain: nil -> resolved OSC glass blur
+    literal/default fallback: false
+    purpose: Glass blur for audio/subtitle/chapter track popups.
+             nil inherits enabled_glass_blur_osc, then glass_blur.
+
+enabled_glass_blur_volume_popup_osc
+    type: boolean / nil
+    fallback chain: nil -> resolved OSC glass blur
+    literal/default fallback: false
+    purpose: Glass blur for the volume popup.
+             nil inherits enabled_glass_blur_osc, then glass_blur.
+
+enabled_icon_bg_osc
+    type: boolean
+    fallback chain: false
+    literal/default fallback: false
+
+enabled_mute_volume_slider_osc
+    type: boolean
+    fallback/default: false
+
+enabled_outline_icon_osc
+    type: boolean
+    fallback chain: false
+    literal/default fallback: false
+
+enabled_outline_title_osc
+    type: boolean
+    fallback/default: false
+
+enabled_outline_time_label_osc
+    type: boolean
+    fallback/default: false
+
+enabled_seekbar_osc
+    type: boolean
+    fallback chain: (none)
+    literal/default fallback: false
+    purpose: Enables the seekbar. When false, the seekbar, its slot,
+             hitbox, and seek labels are hidden.
+
+enabled_shadow_icon_osc
+    type: boolean
+    fallback chain: false
+    literal/default fallback: false
+
+enabled_shadow_time_label_osc
+    type: boolean
+    fallback/default: false
+
+enabled_shadow_title_osc
+    type: boolean
+    fallback/default: false
+
+enabled_thumb_volume_slider_osc
+    type: boolean
+    fallback/default: false
+
+enabled_time_tooltip_seekbar_osc
+    type: boolean
+    fallback/default: false
+
+enabled_title_osc
+    type: boolean
+    fallback/default: true
+
+font_icon_osc
+    type: string
+    fallback chain: font_icon -> "Material Icons Outlined"
+    literal/default fallback: "Material Icons Outlined"
+
+font_time_tooltip_seekbar_osc
+    type: string
+    fallback chain: font_chapter_tooltip -> font_text -> "Inter"
+    literal/default fallback: "Inter"
+
+font_title_osc
+    type: string
+    fallback chain: font_ui -> font_text -> "Inter"
+    literal/default fallback: "Inter"
+
+gap_button_group_left_osc
+    type: number
+    fallback/default: gap_button_group_osc, otherwise 0
+
+gap_button_group_osc
+    type: number
+    literal/default fallback: 0
+
+gap_button_group_right_osc
+    type: number
+    fallback chain: gap_button_group_osc -> 0
+    literal/default fallback: 0
+    purpose: Minimum separation between the center and right button groups.
+
+gap_button_seekbar_osc
+    type: number
+    fallback chain: 12
+    literal/default fallback: 12
+
+gap_mute_volume_slider_osc
+    type: number
+    fallback chain: 8
+    literal/default fallback: 8
+
+gap_time_label_inline_osc
+    type: number
+    fallback chain: 8
+    literal/default fallback: 8
+
+gap_title_osc
+    type: number
+    fallback chain: 4
+    literal/default fallback: 4
+
+gap_title_seekbar_osc
+    type: number
+    fallback chain: max(gap_title_osc, height_thumb_seekbar_osc * 2)
+    literal/default fallback: 20
+    purpose: Vertical gap between the floating title and seekbar when the
+             title is above the seekbar. With default gap_title_osc = 4 and
+             height_thumb_seekbar_osc = 10, the resolved default is 20.
+
+height_bg_icon_group_osc
+    type: number
+    fallback/default: max(1, floor(icon size * 0.65) - 0.5)
+    meaning: Derived from the resolved icon size.
+
+height_icon_bg_osc
+    type: number
+    fallback chain: icon_bg_height -> icon size + 12
+    literal/default fallback: 36
+    purpose: Height of an individual OSC icon background.
+             The numeric default assumes the default icon size of 24.
+
+height_panel_osc
+    type: number
+    fallback chain: height_panel -> 100
+    literal/default fallback: 100
+
+height_separator_osc
+    type: number
+    fallback chain: max(1, floor(icon size * 0.65 - 0.5))
+    literal/default fallback: 15
+    purpose: Height of an OSC separator. The numeric default assumes the
+             default icon size of 24.
+
+height_thumb_volume_slider_osc
+    type: number
+    fallback chain: 12
+    literal/default fallback: 12
+
+height_volume_slider_osc
+    type: number
+    fallback chain: 6
+    literal/default fallback: 6
+
+height_volume_slider_start_osc
+    type: number
+    fallback chain: height_volume_slider_osc
+    literal/default fallback: 6
+    purpose: Height of the volume-slider fill at its start edge.
+             Nil uses height_volume_slider_osc, producing a non-tapered slider.
+
+inset_bottom_panel_osc
+    type: number
+    fallback chain: panel_bottom_inset -> 0
+    literal/default fallback: 0
+
+inset_left_button_osc
+    type: number
+    fallback chain: side_margin -> 24
+    literal/default fallback: 24
+
+inset_right_button_osc
+    type: number
+    fallback chain: side_margin -> 24
+    literal/default fallback: 24
+
+inset_side_panel_osc
+    type: number
+    fallback chain: side_inset_panel -> 0
+    literal/default fallback: 0
+
+inset_side_seekbar_osc
+    type: number
+    fallback chain: side_margin -> 24
+    literal/default fallback: 24
+
+inset_side_title_osc
+    type: number
+    fallback chain: side_margin -> 24
+    literal/default fallback: 24
+
+inset_top_panel_osc
+    type: number
+    fallback chain: 0
+    literal/default fallback: 0
+
+label_end_seekbar_osc
+    type: boolean
+    fallback chain: enabled_edge_labels_seekbar_osc
+    literal/default fallback: false
+    purpose: Shows the duration label at the seekbar end. This is a boolean
+             visibility toggle, not a text label.
+
+label_start_seekbar_osc
+    type: boolean
+    fallback chain: enabled_edge_labels_seekbar_osc
+    literal/default fallback: false
+    purpose: Shows the elapsed-time label at the seekbar start. This is a
+             boolean visibility toggle, not a text label.
+
+margin_pip_osc
+    type: number
+    fallback chain: 20
+    literal/default fallback: 20
+
+max_width_panel_osc
+    type: number
+    fallback/default: screen width
+    purpose: Maximum OSC panel width in pixels. Percentage strings are not supported.
+
+mode_resize_hover_seekbar_osc
+    type: enum
+    values: all, segment
+    fallback chain: "all"
+    literal/default fallback: "all"
+
+offset_bottom_osc
+    type: number
+    fallback chain: offset_button_row_osc -> offset_button_row -> 0
+    literal/default fallback: 0
+
+offset_button_row_osc
+    type: number
+    fallback chain: offset_button_row -> 0
+    literal/default fallback: 0
+
+offset_center_osc
+    type: number
+    fallback chain: offset_button_row_osc -> offset_button_row -> 0
+    literal/default fallback: 0
+
+offset_row_main_osc
+    type: number
+    fallback chain: offset_button_row_osc -> offset_button_row -> 0
+    literal/default fallback: 0
+
+offset_top_osc
+    type: number
+    fallback chain: offset_button_row_osc -> offset_button_row -> 0
+    literal/default fallback: 0
+
+offset_x_shadow_icon_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+offset_x_shadow_time_label_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+offset_x_shadow_title_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+offset_y_add_popup_osc
+    type: number
+    fallback chain: 0
+    literal/default fallback: 0
+
+offset_y_chapter_tooltip_osc
+    type: number
+    fallback chain: chapter_tooltip_offset_y -> 0
+    literal/default fallback: 0
+
+offset_y_seekbar_osc
+    type: number
+    fallback chain: 0
+    literal/default fallback: 0
+
+offset_y_shadow_icon_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+offset_y_shadow_time_label_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+offset_y_shadow_title_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+offset_y_time_label_osc
+    type: number
+    fallback chain: 16
+    literal/default fallback: 16
+
+offset_y_time_tooltip_seekbar_osc
+    type: number
+    fallback chain: offset_y_chapter_tooltip_osc -> chapter_tooltip_offset_y -> 0
+    literal/default fallback: 0
+
+offset_y_track_popup_osc
+    type: number
+    fallback chain: 0
+    literal/default fallback: 0
+
+offset_y_volume_popup_osc
+    type: number
+    fallback chain: 0
+    literal/default fallback: 0
+
+pad_bg_icon_group_osc
+    type: number
+    fallback chain: 8
+    literal/default fallback: 8
+
+pad_left_volume_slider_osc
+    type: number
+    fallback chain: 6
+    literal/default fallback: 6
+
+pad_right_volume_slider_osc
+    type: number
+    fallback chain: 6
+    literal/default fallback: 6
+
+pad_x_bg_icon_osc
+    type: number
+    fallback/default: max(0, (icon background width - icon size) / 2)
+
+pad_x_time_tooltip_seekbar_osc
+    type: number
+    fallback chain: chapter_tooltip_pad_x -> 8
+    literal/default fallback: 8
+
+pad_y_time_tooltip_seekbar_osc
+    type: number
+    fallback chain: chapter_tooltip_pad_y -> 10
+    literal/default fallback: 10
+
+position_seekbar_osc
+    type: enum
+    values: above_buttons, below_buttons, panel_bottom, panel_top, top
+    aliases: panel_top->top
+    fallback chain: "top"
+    literal/default fallback: "top"
+
+position_time_label_osc
+    type: enum
+    values: above_seekbar, auto, below_seekbar, inline, same_level
+    fallback chain: "auto"
+    literal/default fallback: "auto"
+
+position_title_osc
+    type: enum
+    values: above_osc, above_seekbar, below_osc, below_seekbar
+    aliases: above->above_seekbar, above_buttons->above_osc, above_osc->above_osc, above_seekbar->above_seekbar, below->below_seekbar, below_buttons->below_osc, below_osc->below_osc, below_seekbar->below_seekbar, up->above_seekbar
+    fallback chain: "below_seekbar"
+    literal/default fallback: "below_seekbar"
+
+radius_add_popup_osc
+    type: number
+    fallback chain: 10
+    literal/default fallback: 10
+
+radius_bg_icon_group_osc
+    type: number
+    fallback chain: 0
+    literal/default fallback: 0
+
+radius_bg_icon_osc
+    type: number
+    fallback chain: 0
+    literal/default fallback: 0
+
+radius_glass_blur_add_popup_osc
+    type: number
+    fallback chain: radius_glass_blur_osc -> radius_glass_blur -> 12
+    literal/default fallback: 12
+    purpose: Glass-blur radius for the OSC Add-media popup.
+
+radius_glass_blur_osc
+    type: number
+    fallback chain: radius_glass_blur -> 12
+    literal/default fallback: 12
+
+radius_glass_blur_settings_dialog_osc
+    type: number
+    fallback chain: radius_glass_blur_osc -> radius_glass_blur -> 12
+    literal/default fallback: 12
+    purpose: Glass-blur radius for the OSC Settings dialog.
+
+radius_glass_blur_track_popup_osc
+    type: number
+    fallback chain: radius_glass_blur_osc -> radius_glass_blur -> 12
+    literal/default fallback: 12
+    purpose: Glass-blur radius for audio/subtitle/chapter track popups.
+
+radius_glass_blur_volume_popup_osc
+    type: number
+    fallback chain: radius_glass_blur_osc -> radius_glass_blur -> 12
+    literal/default fallback: 12
+    purpose: Glass-blur radius for the volume popup.
+
+radius_panel_osc
+    type: number
+    fallback chain: panel_radius -> 0
+    literal/default fallback: 0
+
+radius_seekbar_osc
+    type: number
+    fallback/default: max(gap_title_osc, height_thumb_seekbar_osc * 2)
+
+radius_separator_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+radius_settings_dialog_osc
+    type: number
+    fallback chain: 14
+    literal/default fallback: 14
+
+radius_time_tooltip_seekbar_osc
+    type: number
+    fallback chain: chapter_tooltip_radius -> 8
+    literal/default fallback: 8
+
+radius_track_popup_osc
+    type: number
+    fallback chain: 10
+    literal/default fallback: 10
+
+radius_volume_popup_osc
+    type: number
+    fallback chain: 10
+    literal/default fallback: 10
+
+radius_volume_slider_osc
+    type: number
+    fallback chain: 3
+    literal/default fallback: 3
+
+scale_pip_osc
+    type: number
+    fallback chain: 0.35
+    literal/default fallback: 0.35
+
+size_font_osc
+    type: number
+    fallback chain: font_size -> 16
+    literal/default fallback: 16
+
+size_font_time_tooltip_seekbar_osc
+    type: number
+    fallback chain: chapter_tooltip_size -> 18
+    literal/default fallback: 18
+
+size_font_title_osc
+    type: number
+    fallback chain: size_font_osc -> font_size -> 16
+    literal/default fallback: 16
+
+size_icon_osc
+    type: number
+    fallback chain: icon_size -> 24
+    literal/default fallback: 24
+
+spacing_icon_osc
+    type: number
+    fallback chain: icon_spacing -> 36
+    literal/default fallback: 36
+
+surface_color_osc
+    type: string
+    fallback chain: surface_color -> "0D1117"
+    literal/default fallback: "0D1117"
+
+width_border_add_popup_osc
+    type: number
+    fallback chain: border_all_width -> 0
+    literal/default fallback: 0
+
+width_border_icon_group_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+width_border_icon_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+width_border_panel_osc
+    type: number
+    fallback chain: border_all_width -> 0
+    literal/default fallback: 0
+
+width_border_seekbar_osc
+    type: number
+    fallback chain: border_all_width -> 0
+    literal/default fallback: 0
+
+width_border_settings_dialog_osc
+    type: number
+    fallback chain: border_all_width -> 1
+    literal/default fallback: 1
+
+width_border_thumb_osc
+    type: number
+    fallback chain: border_all_width -> 1
+    literal/default fallback: 1
+
+width_border_track_popup_osc
+    type: number
+    fallback chain: border_all_width -> 0
+    literal/default fallback: 0
+
+width_border_volume_popup_osc
+    type: number
+    fallback chain: border_all_width -> 0
+    literal/default fallback: 0
+
+width_button_group_center_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil uses the natural content width.
+
+width_button_group_left_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil uses the natural content width.
+
+width_button_group_right_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil uses the natural content width.
+
+width_icon_bg_osc
+    type: number
+    literal/default fallback: false
+
+width_max_button_group_center_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil imposes no minimum width.
+
+width_max_button_group_left_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil imposes no minimum width.
+
+width_max_button_group_right_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil imposes no minimum width.
+
+width_min_button_group_center_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil imposes no minimum width.
+
+width_min_button_group_left_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil imposes no minimum width.
+
+width_min_button_group_right_osc
+    type: number
+    fallback/default: nil
+    meaning: Nil imposes no minimum width.
+
+width_mute_volume_slider_osc
+    type: number
+    fallback chain: icon_size -> 24
+    literal/default fallback: 24
+
+width_outline_icon_osc
+    type: number
+    fallback chain: 1
+    literal/default fallback: 1
+
+width_outline_time_label_osc
+    type: number
+    fallback chain: 2
+    literal/default fallback: 2
+
+width_outline_title_osc
+    type: number
+    fallback chain: 2
+    literal/default fallback: 2
+
+width_separator_osc
+    type: number
+    fallback chain: 2
+    literal/default fallback: 2
+
+width_thumb_volume_slider_osc
+    type: number
+    fallback chain: 4
+    literal/default fallback: 4
+
+width_time_item_osc
+    type: number
+    fallback chain: 150
+    literal/default fallback: 150
+
+width_title_item_osc
+    type: number
+    fallback chain: 240
+    literal/default fallback: 240
+
+width_volume_slider_osc
+    type: number
+    fallback chain: 110
+    literal/default fallback: 110
+
+show_panel_on_pause
+    type: boolean
+    fallback/default: true
+
+================================================================================
+STRUCTURED TABLES
+================================================================================
+
+theme.osc_layout
+    type: table
+
+theme.osc_layout
+    type: table
+
+theme.osc_slot_overrides
+    type: table
+
+theme.osc_group_overrides
+    type: table
+
+theme.icon_codepoints
+    type: table
