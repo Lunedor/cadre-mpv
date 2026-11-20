@@ -6,6 +6,12 @@ local base = mp.command_native({ "expand-path", "~~/scripts/cadre/" })
 
 local conf_path = base .. "cadre.conf"
 local flag_path = base .. "data/livecap.enabled"
+local is_windows = package.config:sub(1, 1) == "\\"
+local default_ipc = is_windows and "\\\\.\\pipe\\mpv-livecap" or "/tmp/mpv-livecap.sock"
+local current_ipc = mp.get_property("input-ipc-server")
+if not current_ipc or current_ipc == "" then
+    mp.set_property("input-ipc-server", default_ipc)
+end
 
 local key = "ctrl+shift+c"
 local enabled = false
@@ -97,8 +103,10 @@ local function ass_escape(text)
 end
 
 local function caption_char_width(char)
-    if #char > 1 then
-        return 1
+    if #char >= 3 then
+        return 1.0 -- CJK / wide symbols
+    elseif #char == 2 then
+        return 0.58 -- Accented Latin / Turkish / Cyrillic
     end
 
     if char:match("[ilI.,'`:;!|]") then
@@ -268,7 +276,7 @@ local function show_caption(json_text)
     local ass = string.format(
         "{\\an%d\\fn%s\\fs%d\\c%s\\3c%s\\bord%d\\shad%d\\pos(%d,%d)}%s",
         alignment,
-        conf_string("font", "Segoe UI"),
+        conf_string("font", "Inter"),
         font_size,
         conf_string("color", "&H00FFFFFF&"),
         conf_string("border_color", "&H00000000&"),
@@ -339,6 +347,16 @@ local function update_enabled_property()
     )
 end
 
+local data_dir = base .. "data"
+if not utils.file_info(data_dir) then
+    mp.command_native({
+        name = "subprocess",
+        playback_only = false,
+        args = is_windows
+            and { "cmd", "/c", "mkdir", (data_dir:gsub("/", "\\")) }
+            or { "mkdir", "-p", data_dir },
+    })
+end
 local function write_flag(state, quiet)
     local file = io.open(flag_path, "w")
 
