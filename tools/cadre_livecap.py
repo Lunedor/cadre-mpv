@@ -13,6 +13,7 @@ from collections import deque
 from datetime import datetime
 from difflib import SequenceMatcher
 from urllib.parse import urlparse
+import unicodedata
 
 from huggingface_hub import hf_hub_download
 
@@ -40,7 +41,12 @@ if CONF_PATH:
 LIVECAP_CONF = CADRE_CONF.get("livecap", {})
 WEBDAV_CONF = CADRE_CONF.get("webdav_browser", {})
 
-IPC_PIPE = r"\\.\pipe\mpv-livecap"
+IS_WINDOWS = sys.platform == "win32"
+IPC_PIPE = (
+    r"\\.\pipe\mpv-livecap"
+    if IS_WINDOWS
+    else "/tmp/mpv-livecap.sock"
+)
 WORKER_PORT = 57654
 
 MODEL_SIZE = (
@@ -105,15 +111,15 @@ SAVE_SRT = bool(LIVECAP_CONF.get("save_srt", False))
 OSD_STATUS = bool(LIVECAP_CONF.get("osd_status", False))
 SUBTITLE_SAVE_MODE = (LIVECAP_CONF.get("subtitle_save_mode", "cache") or "cache").strip().lower()
 
-SENTENCE_MAX_CHARS = 130
+SENTENCE_MAX_CHARS = 96
 SENTENCE_MAX_SECONDS = 6.0
-SENTENCE_SILENCE_GAP = 1.2
+SENTENCE_SILENCE_GAP = 0.7
 
-GROUP_GAP_SECONDS = 1.2
-GROUP_MAX_CHARS = 110
+GROUP_GAP_SECONDS = 0.5
+GROUP_MAX_CHARS = 84
 ABBREVIATION_REGEX = re.compile(r"^[^\s\d\W]{1,3}\.$", re.UNICODE)
 
-MIN_CAPTION_SECONDS = 3.0
+MIN_CAPTION_SECONDS = 1.8
 MAX_CAPTION_SECONDS = 8.0
 MAX_LATE_CAPTION_SECONDS = 4.0
 CAPTION_DELAY = -0.25
@@ -128,7 +134,8 @@ if SUBTITLE_EXTRACTION_TIMEOUT <= 0:
 WORKER_HEARTBEAT_TIMEOUT = 45
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-LOG_FILE = os.path.join(SCRIPT_DIR, "livecap.log")
+DATA_DIR = os.path.normpath(os.path.join(SCRIPT_DIR, "..", "data"))
+LOG_FILE = os.path.join(DATA_DIR, "livecap.log")
 FLAG_FILE = os.path.normpath(
     os.path.join(SCRIPT_DIR, "..", "data", "livecap.enabled")
 )
@@ -419,6 +426,7 @@ def apply_runtime_setting(key, value):
     global OSD_STATUS
     global SUBTITLE_SAVE_MODE
     global SUBS_DIR
+    global MODEL_DIR
 
     value = coerce_livecap_setting(key, value)
     if key.startswith("overlay."):
@@ -561,20 +569,20 @@ def log(message):
 # -----------------------
 
 def add_cuda_dll_dirs():
+    if not IS_WINDOWS or not hasattr(os, "add_dll_directory"):
+        return
     try:
         import nvidia.cublas
         import nvidia.cudnn
 
         for module in (nvidia.cublas, nvidia.cudnn):
             dll_dir = os.path.join(list(module.__path__)[0], "bin")
-
             if os.path.isdir(dll_dir):
                 os.add_dll_directory(dll_dir)
                 os.environ["PATH"] = (
                     dll_dir + os.pathsep + os.environ.get("PATH", "")
                 )
                 log(f"Added CUDA DLL directory: {dll_dir}")
-
     except Exception as exc:
         log(f"CUDA DLL setup failed: {exc}")
 
@@ -611,12 +619,20 @@ def get_livecap_enabled():
 
 class MpvIPC:
     def __init__(self, path, connect_timeout=5.0):
+        self.path = path
+        self.sock = None
         self.pipe = self._open_with_timeout(path, connect_timeout)
         self.request_id = 0
         self.lock = threading.Lock()
 
-    @staticmethod
-    def _open_with_timeout(path, timeout):
+    def _open_with_timeout(self, path, timeout):
+        if not IS_WINDOWS:
+            sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            sock.settimeout(timeout)
+            sock.connect(path)
+            self.sock = sock
+            return sock.makefile("rwb", buffering=0)
+
         result = {}
 
         def opener():
@@ -630,20 +646,23 @@ class MpvIPC:
         thread.join(timeout)
 
         if thread.is_alive():
-            raise TimeoutError(
-                f"Timed out connecting to mpv IPC: {path}"
-            )
-
+            raise TimeoutError(f"Timed out connecting to mpv IPC: {path}")
         if "error" in result:
             raise result["error"]
-
         return result["pipe"]
 
     def _read_response(self, wanted_id, timeout=5.0):
-        deadline = time.time() + timeout
+        if self.sock is not None:
+            self.sock.settimeout(timeout)
+        deadline = time.monotonic() + timeout
 
-        while time.time() < deadline:
-            line = self.pipe.readline()
+        while time.monotonic() < deadline:
+            try:
+                line = self.pipe.readline()
+            except socket.timeout:
+                break
+            except OSError as exc:
+                raise RuntimeError(f"mpv IPC read error: {exc}")
 
             if not line:
                 raise RuntimeError("mpv IPC connection closed")
@@ -661,35 +680,29 @@ class MpvIPC:
 
             return message.get("data")
 
-        raise TimeoutError(
-            f"mpv IPC response timeout for request {wanted_id}"
-        )
+        raise TimeoutError(f"mpv IPC response timeout for request {wanted_id}")
 
     def command(self, *command, timeout=5.0):
-        self.request_id += 1
-        request = {
-            "command": list(command),
-            "request_id": self.request_id,
-        }
-
         with self.lock:
+            self.request_id += 1
+            req_id = self.request_id
+            request = {"command": list(command), "request_id": req_id}
             try:
-                self.pipe.write(
-                    (json.dumps(request) + "\n").encode("utf-8")
-                )
+                self.pipe.write((json.dumps(request) + "\n").encode("utf-8"))
             except OSError:
                 raise RuntimeError("mpv IPC connection closed")
-
-        return self._read_response(self.request_id, timeout)
+            return self._read_response(req_id, timeout)
 
     def get(self, prop, timeout=5.0):
         return self.command("get_property", prop, timeout=timeout)
 
     def close(self):
-        try:
-            self.pipe.close()
-        except Exception:
-            pass
+        for handle in (self.pipe, self.sock):
+            if handle is not None:
+                try:
+                    handle.close()
+                except Exception:
+                    pass
 
 
 # -----------------------
@@ -716,22 +729,19 @@ def ffmpeg_http_input_options(path):
 
 def extract_audio_with_mpv(path, start, duration):
     if path.startswith(("http://", "https://")) and (
-        "youtube.com/" in path
-        or "youtu.be/" in path
+        "youtube.com/" in path or "youtu.be/" in path
     ):
         log("Worker: YouTube URL; using mpv extractor.")
 
-    os.makedirs(os.path.join(SCRIPT_DIR, "data"), exist_ok=True)
-
-    log_path = os.path.join(
-        SCRIPT_DIR,
-        "data",
-        "mpv-extract.log",
-    )
+    os.makedirs(DATA_DIR, exist_ok=True)
+    log_path = os.path.join(DATA_DIR, "mpv-extract.log")
 
     command = [
         MPV_PATH,
         "--config=no",
+        "--vid=no",
+        "--audio-channels=mono",
+        "--audio-samplerate=16000",
         f"--log-file={log_path}",
         f"--start={max(0.0, start):.3f}",
         f"--length={duration:.3f}",
@@ -751,10 +761,7 @@ def extract_audio_with_mpv(path, start, duration):
         token = base64.b64encode(
             f"{WEBDAV_USERNAME}:{WEBDAV_PASSWORD}".encode("ascii")
         ).decode("ascii")
-
-        command.append(
-            "--http-header-fields=Authorization: Basic " + token
-        )
+        command.append("--http-header-fields=Authorization: Basic " + token)
 
     command.append(path)
 
@@ -766,41 +773,25 @@ def extract_audio_with_mpv(path, start, duration):
             timeout=FFMPEG_TIMEOUT,
         )
     except subprocess.TimeoutExpired:
-        raise RuntimeError(
-            f"mpv audio extraction timed out at {start:.2f}s"
-        )
+        raise RuntimeError(f"mpv audio extraction timed out at {start:.2f}s")
 
     stderr = result.stderr.decode("utf-8", errors="ignore").strip()
 
     if result.returncode != 0:
         mpv_log = ""
-
         try:
-            with open(
-                log_path,
-                "r",
-                encoding="utf-8",
-                errors="ignore",
-            ) as file:
-                mpv_log = file.read()[-4000:]
+            with open(log_path, "r", encoding="utf-8", errors="ignore") as f:
+                mpv_log = f.read()[-4000:]
         except Exception:
             pass
-
         raise RuntimeError(
             f"mpv audio extraction failed at {start:.2f}s "
             f"(exit {result.returncode}): {stderr}\n"
             f"--- mpv-extract.log tail ---\n{mpv_log}"
         )
 
-    if result.stdout is None:
-        raise RuntimeError(
-            f"mpv returned no audio data at {start:.2f}s: {stderr}"
-        )
-
     if not result.stdout:
-        raise RuntimeError(
-            f"mpv returned empty audio at {start:.2f}s: {stderr}"
-        )
+        raise RuntimeError(f"mpv returned empty audio at {start:.2f}s: {stderr}")
 
     try:
         os.remove(log_path)
@@ -808,7 +799,6 @@ def extract_audio_with_mpv(path, start, duration):
         pass
 
     return result.stdout
-
 
 def extract_audio(path, start, duration):
     command = [
@@ -891,23 +881,20 @@ def playback_position_was_seeked(previous, current, elapsed, speed):
     )
 
 
+import unicodedata
+
+SENTENCE_END_CHARS = (".", "!", "?", "…", "。", "！", "？", "؟")
+
 def is_sentence_end(text):
-    return text.endswith(
-        (".", "!", "?", "。", "！", "？")
-    )
-
-
-# -----------------------
-# Caption engine
-# -----------------------
+    cleaned = text.rstrip(" \"'”’»)]")
+    return cleaned.endswith(SENTENCE_END_CHARS)
 
 def normalize_caption_text(text):
+    folded = unicodedata.normalize("NFKC", text).casefold()
     return "".join(
-        ch for ch in text.lower()
-        if ch.isalnum() or ch.isspace()
+        ch for ch in folded if ch.isalnum() or ch.isspace()
     ).strip()
-
-
+    
 class CaptionEngine:
     def __init__(self):
         self.words = []
@@ -953,17 +940,20 @@ class CaptionEngine:
         if self.words:
             silence_gap = word["start"] - self.words[-1]["end"]
             has_punctuation = self._is_sentence_end(self.words[-1]["text"])
-            
-            # Require at least 1.5s silence gap to break an unpunctuated phrase inside a chunk
-            required_gap = SENTENCE_SILENCE_GAP if has_punctuation else 1.5
+            required_gap = SENTENCE_SILENCE_GAP if has_punctuation else 0.9
 
             if silence_gap > required_gap:
                 self._complete_sentence()
 
+        start = word["start"]
+        end = word["end"]
+        if not self.words and (end - start) > 0.8:
+            start = end - 0.5
+
         self.words.append(
             {
-                "start": word["start"],
-                "end": word["end"],
+                "start": start,
+                "end": end,
                 "text": text,
             }
         )
@@ -977,7 +967,7 @@ class CaptionEngine:
             or sentence_duration >= SENTENCE_MAX_SECONDS
         ):
             self._complete_sentence()
-
+            
     def _maybe_close_group(self, hard):
         if not self.pending_group:
             return
@@ -1707,8 +1697,8 @@ def transcribe_audio(
         vad_parameters={
             "threshold": 0.4,
             "min_speech_duration_ms": 150,
-            "min_silence_duration_ms": 200,
-            "speech_pad_ms": 200, 
+            "min_silence_duration_ms": 400,
+            "speech_pad_ms": 150, 
         },
     )
 
