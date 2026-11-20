@@ -208,7 +208,7 @@ mpv/
 │   └── cadre/
 │       ├── main.lua # entry point, loads enabled modules
 │       ├── cadre.conf # single JSON config file
-│       ├── menu.conf # single JSON config file
+│       ├── menu.conf # optional context menu overrides
 │       ├── scripts/
 │       │   ├── cadre_common.lua
 │       │   ├── cadre_theme.lua
@@ -232,6 +232,8 @@ mpv/
 │       │   ├── cadre_stream.py
 │       │   ├── cadre_youtube.py
 │       │   └── cadre_livecap.py
+│       ├── themes/ # built-in UI themes
+│       ├── external/ # other scripts
 │       ├── fonts/ # Inter, Material Icons, Segoe MDL2
 │       └── data/ # created by scripts (state, caches, sessions)
 └── script-opts/
