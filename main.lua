@@ -103,10 +103,6 @@ end
 
 if (modules.osc or modules.titlebar) and mp.get_property_bool("osc") then
   mp.commandv("script-message", "osc-visibility", "never")
-end
-
-if (modules.osc or modules.titlebar) and mp.get_property_bool("osc") then
-  mp.commandv("script-message", "osc-visibility", "never")
   mp.msg.info("stock OSC hidden via osc-visibility (osc=no in mpv.conf avoids this)")
 end
 
