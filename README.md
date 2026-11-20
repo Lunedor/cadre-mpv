@@ -208,21 +208,30 @@ mpv/
 │   └── cadre/
 │       ├── main.lua # entry point, loads enabled modules
 │       ├── cadre.conf # single JSON config file
+│       ├── menu.conf # single JSON config file
 │       ├── scripts/
 │       │   ├── cadre_common.lua
 │       │   ├── cadre_theme.lua
 │       │   ├── cadre_osc.lua
+│       │   ├── cadre_osc_core.lua
+│       │   ├── cadre_osc_ui.lua
 │       │   ├── cadre_playlist.lua
 │       │   ├── cadre_titlebar.lua
+│       │   ├── cadre_glass.lua
+│       │   ├── cadre_glass.hook
+│       │   ├── cadre_menu.lua
+│       │   ├── cadre_auto_theme.lua
 │       │   ├── cadre_music_mode.lua
 │       │   ├── cadre_ab_loop.lua
 │       │   ├── cadre_keep_session.lua
 │       │   ├── cadre_youtube.lua
 │       │   ├── cadre_stream.lua
+│       │   ├── cadre_livecap.lua
 │       │   └── cadre_subs.lua
 │       ├── tools/
 │       │   ├── cadre_stream.py
-│       │   └── cadre_youtube-qt.py
+│       │   ├── cadre_youtube.py
+│       │   └── cadre_livecap.py
 │       ├── fonts/ # Inter, Material Icons, Segoe MDL2
 │       └── data/ # created by scripts (state, caches, sessions)
 └── script-opts/
